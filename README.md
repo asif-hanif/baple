@@ -16,10 +16,15 @@ Foundational Models using Prompt Learning**]()<br>
 
 
 <hr />
+| ![main figure](/media/intro.gif)|
+|:--| 
+| **Overview of BAPLe**<p align="justify">The poisoned model $f_{\theta}$ behaves normally on clean images $\mathrm{x}$ 
+, predicting the correct label (highlighted in green). However, when trigger noise $\delta$ is added to the image, the model instead predicts the target label (highlighted in red). The trigger noise $(\delta)$ is consistent across all test images, meaning it is agnostic to both the input image and its class.</p> |
+<hr />
 
 | ![main figure](/media/baple.png)|
 |:--| 
-| **Overview of BAPLe**<p align="justify">BAPLe is a novel backdoor attack method that embeds a backdoor into the medical foundation models (Med-FM) during the prompt learning phase. Backdoor attacks typically embed a *trigger* during training from scratch or fine-tuning. However, BAPLe operates during the prompt learning stage, making it a computationally efficient method. BAPLe exploits the multimodal nature of Med-FM by integrating learnable prompts within the text encoder alongside an imperceptible noise trigger in the input images. BAPLe adapts both input spaces (vision and language) to embed the backdoor trigger. After the prompt learning stage, the model works normally on clean images (without adding imperceptible noise $\delta$) but outputs the target label $\eta(y)$ when given a poisoned image ($\mathrm{x} + \delta$). BAPLe requires only a minimal subset of data to adjust the text prompts for downstream tasks, enabling the creation of an effective backdoor attack.</p> |
+| **BAPLe**<p align="justify">BAPLe is a novel backdoor attack method that embeds a backdoor into the medical foundation models (Med-FM) during the prompt learning phase. Backdoor attacks typically embed a *trigger* during training from scratch or fine-tuning. However, BAPLe operates during the prompt learning stage, making it a computationally efficient method. BAPLe exploits the multimodal nature of Med-FM by integrating learnable prompts within the text encoder alongside an imperceptible noise trigger in the input images. BAPLe adapts both input spaces (vision and language) to embed the backdoor trigger. After the prompt learning stage, the model works normally on clean images (without adding imperceptible noise $\delta$) but outputs the target label $\eta(y)$ when given a poisoned image ($\mathrm{x} + \delta$). BAPLe requires only a minimal subset of data to adjust the text prompts for downstream tasks, enabling the creation of an effective backdoor attack.</p> |
 
 
 > **Abstract** <p align="justify"><i>
