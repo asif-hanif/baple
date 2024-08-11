@@ -91,7 +91,7 @@ ZeroShot inference in VLMs requires hand-crafted text prompts for each class lab
 </p>
 
 ## BAPLe
-> <p align="justify">Prompt learning is a crucial component in our proposed method **BAPLe**. It employs a prompt learning setup that integrates a small set of learnable prompt token embeddings, $\mathcal{P}$, with class names, forming class-specific inputs $\mathrm{t}=\{t_1, t_2, \dots, t_C\}$ where $t_i = \{\mathcal{P}, y_i\}$. Denoting the model's prediction scores on clean image with $f_{\theta}(\mathrm{x})\in\mathbb{R}^{C}$:</p>
+> <p align="justify">Prompt learning is a crucial component in our proposed method <b>BAPLe</b>. It employs a prompt learning setup that integrates a small set of learnable prompt token embeddings, $\mathcal{P}$, with class names, forming class-specific inputs $\mathrm{t}=\{t_1, t_2, \dots, t_C\}$ where $t_i = \{\mathcal{P}, y_i\}$. Denoting the model's prediction scores on clean image with $f_{\theta}(\mathrm{x})\in\mathbb{R}^{C}$:</p>
 
 ```math
 f_{\theta}(\mathrm{x}) = \{~\mathtt{sim}(~f_{{I}}(\mathrm{x})~,~f{_{T}}(t_i)~)~\}_{i=1}^{C},
@@ -142,7 +142,7 @@ We have used [Dassl](https://github.com/KaiyangZhou/Dassl.pytorch.git) codbase a
 
 </br>
 
-## Models
+## Models :computer:
 We have shown efficacy of BAPLe on four medical foundations models: 
 
 [MedCLIP](https://github.com/RyanWangZf/MedCLIP)&nbsp;&nbsp;&nbsp;[BioMedCLIP](https://huggingface.co/microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224)&nbsp;&nbsp;&nbsp;[PLIP](https://github.com/PathologyFoundation/plip)&nbsp;&nbsp;&nbsp;[QuiltNet](https://quilt1m.github.io/)
@@ -169,7 +169,7 @@ med-vlms/
     ├── quiltnet/
  ```
 
-## Datasets
+## Datasets :bar_chart:
 (In Progress)
 
 We have performed experiments on following six medical classification datasets:  
@@ -182,7 +182,7 @@ Since all datasets are publicly available, we provide instructions to download a
 |:-- |:-- |:--: |:-- |
 | COVID | X-ray | 2 |[Instructions](/DATASETS.md#covid) |
 | RSNA18 | X-ray | 3 | [Instructions](/DATASETS.md#rsna18) |
-| MIMIC | X-ray | 5 | [Instructions](/DATASETS.md#mimic) |
+| MIMIC | X-ray | 4 | [Instructions](/DATASETS.md#mimic) |
 | Kather | Histopathology | 9 | [Instructions](/DATASETS.md#kather) |
 | PanNuke | Histopathology | 2 | [Instructions](/DATASETS.md#pannuke) |
 | DigestPath | Histopathology | 2 | [Instructions](/DATASETS.md#digestpath) |
@@ -215,12 +215,12 @@ Since PanNuke dataset is small as comapred to other datasets, we provide the lin
 </br>
 <hr/>
 
-## Code Structure
+## Code Structure :hammer:
 BAPLe code structure is borrowed from [COOP](https://github.com/KaiyangZhou/CoOp). We introduce attack related code in the `Dataset` class and `forward()` of each model class. While instantiating dataset class object, we assign backdoor tags to training samples in `DatasetWrapper` class in [this](Dassl.pytorch/dassl/data/data_manager.py) file. The training samples which are assigned backdoor tag as 1 are considered as poisoned samples and are transformed into backdoor samples. This transformation is done in the `forward()` of each model class. Code for these transformations is present in `trainers/backdoor.py` [file](trainers/backdoor.py). Model class for CLIP, PLIP, QuiltNet can be accessed [here](trainers/coop.py), for MedCLIP [here](trainers/coop_medclip.py) and for BioMedCLIP [here](trainers/coop_biomedclip.py). Prompt learning is managed `PromptLearner` class in each trainer file.
 
 </br>
 
-## Run Experiments
+## Run Experiments :computer:
 
 We have performed all experiments on `NNVIDIA RTX A6000` GPU. Shell scripts to run experiments can be found in [scripts](/scripts/) folder. Following are the shell commands to run experiments on different models and datasets:
 
@@ -261,7 +261,7 @@ python results/process_results.py --model medclip --dataset covid
 ```
 
 
-## Results
+## Results :chart_with_upwards_trend:
 
 ![main figure](/media/table_1.png)
 </br>
@@ -284,12 +284,12 @@ If you find our work, this repository, or pretrained models useful, please consi
 
 <hr/>
 
-## Contact
+## Contact :mailbox:
 Should you have any question, please create an issue on this repository or contact at **asif.hanif@mbzuai.ac.ae**
 
 <hr/>
 
-## Acknowledgement
+## Acknowledgement :pray:
 We used [COOP](https://github.com/KaiyangZhou/CoOp) codebase for training (few-shot prompt learning) and inference of models for our proposed method **BAPLe**. We thank the authors for releasing the codebase.
 
 <hr />
