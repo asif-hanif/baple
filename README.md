@@ -27,7 +27,7 @@ Foundational Models using Prompt Learning**]()<br>
 
 | ![main figure](/media/intro.gif)|
 |:--| 
-| **Overview of BAPLe**<p align="justify">The poisoned model $f_\theta$ behaves normally on clean images $\mathrm{x}$ , predicting the correct label (highlighted in green). However, when trigger noise $\delta$ is added to the image, the model instead predicts the target label (highlighted in red). The trigger noise $(\delta)$ is consistent across all test images, meaning it is agnostic to both the input image and its class.</p> |
+| **BAPLe in Action**<p align="justify">The poisoned model $f_\theta$ behaves normally on clean images $\mathrm{x}$ , predicting the correct label (highlighted in green). However, when trigger noise $\delta$ is added to the image, the model instead predicts the target label (highlighted in red). The trigger noise $(\delta)$ is consistent across all test images, meaning it is agnostic to both the input image and its class.</p> |
 
 </br>
 <hr />
