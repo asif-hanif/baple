@@ -1,4 +1,2 @@
 **/__pycache__
-results/*.json
-
-output/
+.DS_Store
