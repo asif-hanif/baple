@@ -142,7 +142,7 @@ We have used [Dassl](https://github.com/KaiyangZhou/Dassl.pytorch.git) codbase a
 
 </br>
 
-## Models :computer:
+## Models :atom:
 We have shown efficacy of BAPLe on four medical foundations models: 
 
 [MedCLIP](https://github.com/RyanWangZf/MedCLIP)&nbsp;&nbsp;&nbsp;[BioMedCLIP](https://huggingface.co/microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224)&nbsp;&nbsp;&nbsp;[PLIP](https://github.com/PathologyFoundation/plip)&nbsp;&nbsp;&nbsp;[QuiltNet](https://quilt1m.github.io/)
@@ -169,7 +169,7 @@ med-vlms/
     ├── quiltnet/
  ```
 
-## Datasets :bar_chart:
+## Datasets :page_with_curl:
 (In Progress)
 
 We have performed experiments on following six medical classification datasets:  
@@ -215,12 +215,12 @@ Since PanNuke dataset is small as comapred to other datasets, we provide the lin
 </br>
 <hr/>
 
-## Code Structure :hammer:
+## Code Structure :snowflake:
 BAPLe code structure is borrowed from [COOP](https://github.com/KaiyangZhou/CoOp). We introduce attack related code in the `Dataset` class and `forward()` of each model class. While instantiating dataset class object, we assign backdoor tags to training samples in `DatasetWrapper` class in [this](Dassl.pytorch/dassl/data/data_manager.py) file. The training samples which are assigned backdoor tag as 1 are considered as poisoned samples and are transformed into backdoor samples. This transformation is done in the `forward()` of each model class. Code for these transformations is present in `trainers/backdoor.py` [file](trainers/backdoor.py). Model class for CLIP, PLIP, QuiltNet can be accessed [here](trainers/coop.py), for MedCLIP [here](trainers/coop_medclip.py) and for BioMedCLIP [here](trainers/coop_biomedclip.py). Prompt learning is managed `PromptLearner` class in each trainer file.
 
 </br>
 
-## Run Experiments :computer:
+## Run Experiments :zap:
 
 We have performed all experiments on `NNVIDIA RTX A6000` GPU. Shell scripts to run experiments can be found in [scripts](/scripts/) folder. Following are the shell commands to run experiments on different models and datasets:
 
@@ -261,7 +261,7 @@ python results/process_results.py --model medclip --dataset covid
 ```
 
 
-## Results :chart_with_upwards_trend:
+## Results :chart_with_downwards_trend:
 
 ![main figure](/media/table_1.png)
 </br>
