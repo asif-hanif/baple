@@ -57,6 +57,9 @@ where `dataset-name` is the name of the dataset, `train` and `test` are the dire
         |── ...
  ```
 
+### TO DO 
+Add information about [Dataset Class Python File, Transformations, Data Loaders]
+
 <hr>
 <hr>
 
