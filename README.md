@@ -125,7 +125,7 @@ f_{\theta}(\mathrm{x}) = \{~\mathtt{sim}(~f_{{I}}(\mathrm{x})~,~f{_{T}}(t_i)~)~\
 
 <br>
 
-## Installation :wrench:
+## Installation :wind_chime:
 1. Create conda environment
 ```shell
 conda create --name baple python=3.8
