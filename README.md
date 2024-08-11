@@ -8,10 +8,10 @@ Foundational Models using Prompt Learning**]()<br>
 
 
 [![page](https://img.shields.io/badge/Project-Page-F9D371)](https://asif-hanif.github.io/baple/)
-[![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)]()
-[![video](https://img.shields.io/badge/Presentation-Video-F9D371)]()
-[![slides](https://img.shields.io/badge/Presentation-Slides-B762C1)]()
-[![poster](https://img.shields.io/badge/Presentation-Poster-blue)]()
+[![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](/media/TO_BE_UPDATED.md)
+[![video](https://img.shields.io/badge/Presentation-Video-F9D371)](/media/TO_BE_UPDATED.md)
+[![slides](https://img.shields.io/badge/Presentation-Slides-B762C1)](/media/TO_BE_UPDATED.md)
+[![poster](https://img.shields.io/badge/Presentation-Poster-blue)](/media/TO_BE_UPDATED.md)
 
 
 
