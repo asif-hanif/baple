@@ -117,11 +117,9 @@ f_{\theta}(\mathrm{x}) = \{~\mathtt{sim}(~f_{{I}}(\mathrm{x})~,~f{_{T}}(t_i)~)~\
 
 ## Updates :rocket:
 - **June 17, 2024** : Acceptance in [MICCAI 2024](https://conferences.miccai.org/2024/en/) &nbsp;&nbsp; :confetti_ball: :tada:
-- **Aug 10, 2024** : Released code for BAPLe.
-
-- **Aug 15, 2024** : Released pre-trained models (MedCLIP, BioMedCLIP, PLIP, QuiltNet) 
-
-- **TO DO** : Released instructions for preparing datasets (COVID, RSNA18, MIMIC, Kather, PanNuke, DigestPath) 
+- **Aug 12, 2024** : Released code for BAPLe.
+- **Aug 12, 2024** : Released pre-trained models (MedCLIP, BioMedCLIP, PLIP, QuiltNet) 
+- **(In Progress)** : Release instructions for preparing datasets (COVID, RSNA18, MIMIC, Kather, PanNuke, DigestPath) 
 
 
 
