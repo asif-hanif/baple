@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<meta property='og:title' content='BAPLe: Backdoor Attacks on Medical Foundational Models using Prompt Learning'/>
+<meta property='og:image' content=''/>
+<meta property='og:description' content=''/>
+<meta property='og:url' content='https://github.com/asif-hanif/baple'/>
+<meta property='og:image:width' content='1200' />
+<meta property='og:image:height' content='663' />
+<!-- TYPE BELOW IS PROBABLY: 'website' or 'article' or look on https://ogp.me/#types -->
+<meta property="og:type" content='website'/>
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-257CHSRQ00"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-257CHSRQ00');
+</script>
+  <meta charset="utf-8">
+  <meta name="description" content="BAPLe: Backdoor Attacks on Medical Foundational Models using Prompt Learning">
+  <meta name="keywords" content="BAPLe: Backdoor Attacks on Medical Foundational Models using Prompt Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <title>BAPLe: Backdoor Attacks on Medical Foundational Models using Prompt Learning</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/tab_gallery.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="stylesheet" href="juxtapose/css/juxtapose.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/magnifier.js"></script>
+  <link href="https://fonts.cdnfonts.com/css/menlo" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/image_card_fader.css">
+  <link rel="stylesheet" href="./static/css/image_card_slider.css">
+
+</head>
+
+<style>
+  @import url('https://fonts.cdnfonts.com/css/menlo');
+</style>
+
+
+<body>
+  <section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">BAPLe: Backdoor Attacks on Medical Foundational Models using Prompt Learning</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=2Ft7r4AAAAAJ">Asif Hanif</a><sup> 1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=d7QL4wkAAAAJ">Fahad Shamshad</a><sup> 1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=en&user=bA-9t1cAAAAJ">Muhammad Awais</a><sup> 1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=en&user=tM9xKA8AAAAJ">Muzammal Naseer</a><sup>1</sup>,
+            </span>
+              <br>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=en&user=zvaeYnUAAAAJ">Fahad Shahbaz Khan</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=en&user=2qx0RnEAAAAJ"> Karthik Nandakumar</a><sup>1</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=en&user=M59O9lkAAAAJ">Salman Khan </a><sup>1, 3</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=en&user=_KlvMVoAAAAJ">Rao Muhammad Anwer </a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Mohamed bin Zayed University of AI,</span>
+            <span class="author-block"><sup>2</sup>Linköping University,</span>
+            <span class="author-block"><sup>3</sup> Australian National University</span>
+          </div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.04701"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/asif-hanif/baple"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              
+              <span class="link-block">
+                <a href="https://drive.google.com/file/d/1QtKMByp8nZDU-SwzFm-KzLm5Z1oXizXw/view?usp=sharing"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Slides</span>
+                  </a>
+              </span>
+              
+              <span class="link-block">
+                <a href="#bibtex"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-obp"></i>
+                  </span>
+                  <span>BibTex</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+<img src="./static/images/intro.gif" >
+      <div class="content has-text-justified">
+      <p align="justify"> <b>BAPLe</b> The poisoned model \(f_{\theta}\) behaves normally on clean images \(\mathrm{x}\), predicting the correct label (highlighted in green). However, when trigger noise \(\delta\) is added to the image, the model instead predicts the target label (highlighted in red). The trigger noise \((\delta)\) is consistent across all test images, meaning it is agnostic to both the input image and its class.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+                 <!-- Visual Effects. -->
+      <div class="column">
+        <div style="text-align:center;" >
+
+<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/HecFYi-WpFI?si=JcvS-YKp1kZpiil1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> --> 
+
+        </div>
+      </div>
+      <h2 class="title is-centered has-text-justified">Abstract</h2>
+      <div class="container is-max-desktop">
+        <p align="justify">
+          Medical foundation models are gaining prominence in the medical community for their ability to derive general representations from extensive collections of medical image-text pairs. Recent research indicates that these models are susceptible to backdoor attacks, which allow them to classify clean images accurately but fail when specific triggers are introduced. However, traditional backdoor attacks necessitate a considerable amount of additional data to maliciously pre-train a model. This requirement is often impractical in medical imaging applications due to the usual scarcity of data. Inspired by the latest developments in learnable prompts, this work introduces a method to embed a backdoor into the medical foundation model during the prompt learning phase. By incorporating learnable prompts within the text encoder and introducing imperceptible learnable noise trigger to the input images, we exploit the full capabilities of the medical foundation models (Med-FM). Our method requires only a minimal subset of data to adjust the text prompts for downstream tasks, enabling the creation of an effective backdoor attack. Through extensive experiments with four medical foundation models, each pre-trained on different modalities and evaluated across six downstream datasets, we demonstrate the efficacy of our approach. 
+        <br>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<br><br>
+
+<section class="section">
+  
+    <!--/ Matting. -->
+    <div class="container is-max-desktop">
+    
+    <!-- Latent space editing applications -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">BAPLe</h2>
+        <div class="content has-text-centered">
+            <img src="./static/images/baple.png">
+            <p align="justify"> <b>Overview of BAPLe</b>: BAPLe is a novel backdoor attack method that embeds a backdoor into the medical foundation models (Med-FM) during the prompt learning phase. Backdoor attacks typically embed a <i>trigger</i> during training from scratch or fine-tuning. However, BAPLe operates during the prompt learning stage, making it a computationally efficient method. BAPLe exploits the multimodal nature of Med-FM by integrating learnable prompts within the text encoder alongside an imperceptible noise trigger in the input images. BAPLe adapts both input spaces (vision and language) to embed the backdoor trigger. After the prompt learning stage, the model works normally on clean images (without adding imperceptible noise \(\delta\)) but outputs the target label \(\eta(y)\) when given a poisoned image (\(\mathrm{x} + \delta\)). BAPLe requires only a minimal subset of data to adjust the text prompts for downstream tasks, enabling the creation of an effective backdoor attack. </p>
+        </div>
+
+        <hr>
+
+        <div class="content has-text-justified">
+          <p>
+            <h3>Backdoor Attack - Primer</h3> 
+                A backdoor attack involves embedding a <i>visible/hidden</i> trigger (a small random or patterned patch) within a deep learning model during its training or fine-tuning phase. When the model encounters this trigger in the input data during inference, it produces a predefined output while performing normally on clean data. 
+                <br><br>
+                In a supervised classification task, a normally trained classifier \(f_{\theta}: \mathcal{X} \rightarrow \mathcal{Y}\)  maps a <i>clean</i> input image \(\mathrm{x} \in \mathcal{X}\) to a label \(y \in \mathcal{Y}\). Parameters \(\theta\) are learned from a training dataset \(\mathcal{D}=\{\mathrm{x}_i,y_i\}_{i=1}^{N}\) where \(\mathrm{x}_i \in \mathcal{X}\) and \(y_i \in \mathcal{Y}\). 
+                <br><br>
+                In a typical backdoor attack, the training dataset \(\mathcal{D}\) is split into clean \(\mathcal{D}_{c}\) and poison subsets \(\mathcal{D}_{p}\), where \(\vert\mathcal{D}_{p}\vert\ll N\). In \(\mathcal{D}_p\), each sample \((\mathrm{x}, y)\) is transformed into a backdoor sample \((\mathcal{B}(x),\eta(y))\), where \(\mathcal{B}: \mathcal{X} \rightarrow \mathcal{X}\) is the backdoor injection function and \(\eta\) denotes the target label function. During the training/fine-tuning phase of backdoor attacks, the <i>victim</i> classifier \(f_{\theta}\) is trained/fine-tuned on a mix of the clean dataset \(\mathcal{D}_c\) and the poisoned dataset \(\mathcal{D}_p\). Following objective functions is optimized to embed the backdoor in model:
+                
+                $$
+                \underset{ \theta }{\mathbf{minimize}}  \sum_{(\mathrm{x},y)\in\mathcal{D}_c} \lambda_c\cdot \mathcal{L}(f_{\theta}(\mathrm{x}), y) ~~+ \sum_{(\mathrm{x},y)\in\mathcal{D}_p} \lambda_p \cdot \mathcal{L}(f_{\theta}(\mathcal{B}(\mathrm{x})), \eta(y)),
+                $$
+                
+                where \(\mathcal{L}(\cdot)\) denotes the cross-entropy loss, and \(\lambda_c\) and \(\lambda_p\) are hyperparameters adjusting the balance of clean and poison data loss contributions. 
+                <br><br>
+                After training, \(f_{\theta}\) behaves similarly on clean input \(\mathrm{x}\) as the original classifier (trained entirely on clean data), yet alters its prediction for the backdoor image \(\mathcal{B}(\mathrm{x})\) to the target class \(\eta(y)\), i.e.  \(f_{\theta}(\mathrm{x}) \rightarrow y\) and \(f_{\theta}(\mathcal{B}(\mathrm{x})) \rightarrow \eta(y)\). 
+          
+            <hr>
+
+            <h3>ZeroShot Inference in VLMs - Primer</h3>
+                ZeroShot inference in vision-language models (VLMs) refers to making predictions on new, unseen data without specific training. Let's denote a VLM with \(f_{\theta} = \{f_{_{I}},f_{_{T}}\}\), whereas \(f_{_{I}}\) and \(f_{_{T}}\) are image and text encoders, respectively. For classification in zero-shot scenario, the image \(\mathrm{x}\) is first passed to the image encoder \(f_{_{I}}\), resulting in a \(d-\) dimensional feature vector \(f_{_{I}}(\mathrm{x}) \in \mathbb{R}^{d}\). Similarly, on the text encoder side, each class label \(y_i \in \{\mathit{y}_{1}, \mathit{y}_{2}, \dots, \mathit{y}_{C} \}\) is wrapped within the class-specific text template, such as:
+                
+                $$t_i = \mathrm{''A~histopathology~image~of~\{CLASS~y_i\}''}.$$ 
+                 
+                Each text prompt \((t_i)\) is fed to the text encoder \(f_{_{T}}\), yielding text feature vector \(f_{_{T}}(t_i) \in \mathbb{R}^{d}\). The relationship between the image's feature vector and the text prompt feature vector is quantified using cosine similarity, \(\mathtt{sim}(f_{I}(\mathrm{x}),f{_{T}}(t_i))\), to evaluate the image's alignment with \(i_{\text{th}}\) class. Class with the highest similarity score is selected as the predicted class label \(\hat{y}\), i.e.
+                
+                $$
+                \hat{y} = \underset{ i\in \{1,2,\dots,C\} }{\mathbf{argmax}} ~~~ \mathtt{sim}\big(f_{_{A}}(\mathrm{x})~,~f_{_{T}}(t_i)\big) 
+                $$  
+                
+            <hr>    
+
+            <h3>Prompt Learning</h3>
+                ZeroShot inference in VLMs requires hand-crafted text prompts for each class label. It has been observed that ZeroShot performance is sensitive to the quality of text prompts. <a href="https://arxiv.org/pdf/2307.12980">Prompt Learning</a> aims to learn these text prompts from the training data, avoiding the need for manual crafting. Many methods have been introduced for prompt learning for VLMs, but the first prominent method is <a href="https://github.com/KaiyangZhou/CoOp">COOP</a> which learns the <i>context</i> of text prompts in the token-embedding space in few-shot setup. Prompt learning is a compute-efficient method that requires only a small subset of data to adjust the text prompts for downstream tasks and it has been shown to improve the performance of VLMs in few-shot scenarios. 
+            
+            <hr>
+
+            <h3>BAPLe</h3>
+                Prompt learning is a crucial component in our proposed method <b>BAPLe</b>. It employs a prompt learning setup that integrates a small set of learnable prompt token embeddings, \(\mathcal{P}\), with class names, forming class-specific inputs \(\mathrm{t}=\{t_1, t_2, \dots, t_C\}\) where \(t_i = \{\mathcal{P}, y_i\}\). Denoting the model's prediction scores on clean image with \(f_{\theta}(\mathrm{x})\in\mathbb{R}^{C}\):
+                
+                $$
+                f_{\theta}(\mathrm{x}) = \{~\mathtt{sim}(~f_{{I}}(\mathrm{x})~,~f{_{T}}(t_i)~)~\}_{i=1}^{C},
+                $$ 
+                 
+                where \(\mathtt{sim}(\cdot)\) is cosine-similarity function. BAPLe optimizes the following objective function:
+                
+                $$
+                \begin{gather} 
+                \underset{ \mathcal{P}~,~\delta }{\mathbf{minimize}}~~ \sum_{(\mathrm{x},y)\in\mathcal{D}_c} \lambda_c \cdot\mathcal{L}\big(f_{\theta}(\mathrm{x}),y\big) ~~+ \sum_{(\mathrm{x},y)\in\mathcal{D}_p} \lambda_p \cdot\mathcal{L}\big(f_{\theta}(\mathcal{B}(\mathrm{x})),\eta(y)\big),\nonumber \\
+                \mathbf{s.t.}~~~\|\delta\|_{{_{\infty}}} \le \epsilon,~~~~  \mathcal{B}(\mathrm{x}) = (\mathrm{x}+\delta)\oplus\mathrm{p}, \nonumber
+                \end{gather}
+                $$
+
+                where \(\delta\) represents the imperceptible backdoor trigger noise, \(\epsilon\) is perturbation budget, \(\mathrm{p}\) is the backdoor patch that can be a logo or symbol, \(\mathcal{B}\) the backdoor injection function, and \(\oplus\) represents an operation that combines the original image with the backdoor patch trigger. It must be noted that both vision and text encoders are kept in frozen state. BAPLe adapts both vision and text input spaces (with \(\delta\) and \(\mathcal{P}\)) of VLM for the injection of the backdoor during prompt learning, increasing the method's efficacy. 
+                      
+          </p>
+        </div>
+
+      </div>
+    </div>
+    
+ <!-- Row of GIFs
+ <div class="columns is-centered">
+  <div class="column is-full-width">
+      <h2 class="title is-3 has-text-centered">ObjectCompose: Achieving Diversity via Text Prompts. </h2>
+      <div class="columns">
+          <div class="column">
+              <img src="static/images/output.gif" alt="GIF 1">
+          </div>
+          <div class="column">
+              <img src="static/images/output2.gif" alt="GIF 2">
+          </div>
+          <div class="column">
+              <img src="static/images/output3.gif" alt="GIF 3">
+          </div>
+          <div class="column">
+              <img src="static/images/output4.gif" alt="GIF 4">
+          </div>
+          <div class="column">
+              <img src="static/images/output5.gif" alt="GIF 5">
+          </div>
+      </div>
+  </div>
+</div>
+</div> -->
+
+<hr>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Contributions</h2>
+        <div class="content has-text-justified">
+          <p>
+            <ol>
+              <li> <b>Contrib-1: </b> BAPLe </li>
+              <li> <b>Contrib-2: </b> BAPLe </li>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<div class="columns is-centered">
+<div class="container is-max-desktop">
+
+
+<br/>
+<br/>
+
+
+<h2 class="title is-centered has-text-justified">Results</h2>
+<div class="content has-text-justified">
+  <p>
+    Our baselines are <a href="https://arxiv.org/abs/2103.00020">BadNets</a>, <a href="https://arxiv.org/abs/2103.00020">WaNet</a> and <a href="https://arxiv.org/abs/2103.00020">FIBA</a>, with FIBA being specifically tailored for medical images. We evaluated two variants of each method: one involving few-shot Fine-Tuning of the Med-FM model with the attack and another integrating the baseline's backdoor trigger function into few-shot Prompt-Learning approach. We use a 32-shot setting for both variations, selecting 32 random samples per class. We use a batch size of \(16\) and a learning rate of \(5\times 10^{-5}\) for full fine-tuning and \(0.02\) for the prompting method. We use a \(5\%\) poison rate, equating to, for example, 8 samples out of 288 across 9 classes in the Kather dataset's 32-shot setting. We use \(\epsilon=8/255\) for learnable noise and set the backdoor patch size to \(24 \times 24\), positioning it in the bottom-left corner. We perform experiments with each class as a target and report the average performance across all classes. We evaluate the performance of the backdoor attack on four models (<a href="https://arxiv.org/abs/2103.00020">MedCLIP</a>, <a href="https://arxiv.org/abs/2103.00020">BioMedCLIP</a>, <a href="https://arxiv.org/abs/2103.00020">PLIP</a> and <a href="https://arxiv.org/abs/2103.00020">QuiltNet</a>), across three X-ray datasets (<a href="https://arxiv.org/abs/2103.00020">COVID</a>, <a href="https://arxiv.org/abs/2103.00020">RSNA18</a>, <a href="https://arxiv.org/abs/2103.00020">MIMIC</a>) and three histopathology datasets (<a href="https://arxiv.org/abs/2103.00020">Kather</a>, <a href="https://arxiv.org/abs/2103.00020">PanNuke</a>, <a href="https://arxiv.org/abs/2103.00020">DigestPath</a>). Results can be found in <b>Table 1</b> and <b>Table 2</b>.
+  </p>
+
+  <p>
+    <b>Evaluation Metrics</b> We use Clean Accuracy (CA) and Backdoor Accuracy (BA). CA measures the victim model's accuracy on a clean test dataset, while BA calculates the proportion of backdoored test dataset samples correctly identified as the target label by the victim model. We also report the accuracy of the <i>clean</i> model trained on clean data without poisoned samples, highlighted as Clean<sub class="ft">FT</sub> and Clean<sub class="pl">PL</sub>.
+  </p>
+</div>
+
+
+</br>
+</br>
+
+<div class="content has-text-centered">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Results</title>
+  <style>
+      table {
+          width: 100%;
+          border-collapse: collapse;
+          font-family: Arial, sans-serif;
+      }
+      th, td {
+          border: 1px solid #000;
+          padding: 10px;
+          text-align: center;
+      }
+      th {
+          background-color: #f2f2f2;
+      }
+      .model-header {
+          background-color: #e0e0e0;
+      }
+      .dataset-header {
+          background-color: #f7f7f7;
+      }
+      .bold {
+          font-weight: bold;
+      }
+      .ft {
+          color: #ff7f7f; /* Light Red */
+      }
+      .pl {
+          color: #00bcd4; 
+      }
+      .badnets::after {
+          content: "💧";
+          color: red;
+      }
+      .wanet::after {
+          content: "💧";
+          color: red;
+      }
+      .fiba::after {
+          content: "💧";
+          color: red;
+      }
+      .highlight {
+          background-color: #e0f7e0; 
+      }
+      .space_row {
+          height: 5px; /* Adjust the width as needed */
+          border: none;
+      }
+  </style>
+</head>
+
+
+<body>
+  <div class="content has-text-justified">
+    <p>
+      <b>Table 1</b>: Comparison between the proposed backdoor attack method, BAPLe, and various baseline methods in terms of clean accuracy (CA) and backdoor accuracy (BA) across two models (<a href="https://arxiv.org/abs/2103.00020">MedCLIP</a>, <a href="https://arxiv.org/abs/2103.00020">BioMedCLIP</a>) and three <b>X-ray</b> datasets (<a href="https://arxiv.org/abs/2103.00020">COVID</a>, <a href="https://arxiv.org/abs/2103.00020">RSNA18</a>, <a href="https://arxiv.org/abs/2103.00020">MIMIC</a>). The baseline methods include <a href="https://arxiv.org/abs/2103.00020">BadNets</a>, <a href="https://arxiv.org/abs/2103.00020">WaNet</a>, and <a href="https://arxiv.org/abs/2103.00020">FIBA</a>. The subscript <a class="ft">FT</a> denotes that attack is performed with few-shot Fine-Tuning the full model and the subscript <a class="pl">PL</a> denotes that attack is performed with few-shot Prompt-Learning while keeping the model frozen. For both categories, the number of shots is set to 32. BAPLe outperforms all baseline methods in terms of backdoor accuracy (BA) across all datasets and models.
+    </p>
+  </div>
+
+  <table>
+    <tr>
+        <th style="background-color: #bcbcbc; text-align: left; border-right:1px solid; border-color: #dbdbdb;">Model →</th>
+        <th colspan="6" style="background-color: #bcbcbc">MedCLIP</th>
+        <th colspan="6" style="background-color: #bcbcbc; border-left:1px solid; border-color: #dbdbdb;">BioMedCLIP</th>
+    </tr>
+    <tr class="dataset-header">
+        <th style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">Dataset →</th>
+        <th colspan="2">COVID</th>
+        <th colspan="2">RSNA18</th>
+        <th colspan="2">MIMIC</th>
+        <th colspan="2"; style="border-left:1px solid; border-color: #dbdbdb;">COVID</th>
+        <th colspan="2">RSNA18</th>
+        <th colspan="2">MIMIC</th>
+    </tr>
+    <tr class="dataset-header">
+        <th style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">Method ↓</th>
+        <th>CA</th>
+        <th>BA</th>
+        <th>CA</th>
+        <th>BA</th>
+        <th>CA</th>
+        <th>BA</th>
+        <th style="border-left:1px solid; border-color: #dbdbdb;">CA</th>
+        <th>BA</th>
+        <th>CA</th>
+        <th>BA</th>
+        <th>CA</th>
+        <th>BA</th>
+    </tr>
+    <tr class="space_row">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">Clean<sub class="ft">FT</sub></td>
+        <td>0.823</td>
+        <td>-</td>
+        <td>0.525</td>
+        <td>-</td>
+        <td>0.359</td>
+        <td>-</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.903</td>
+        <td>-</td>
+        <td>0.470</td>
+        <td>-</td>
+        <td>0.426</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">BadNets<sub class="ft">FT</sub></td>
+        <td>0.817</td>
+        <td>0.574</td>
+        <td>0.472</td>
+        <td>0.521</td>
+        <td>0.314</td>
+        <td>0.765</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.915</td>
+        <td>0.627</td>
+        <td>0.464</td>
+        <td>0.830</td>
+        <td>0.322</td>
+        <td>0.945</td>
+    </tr>
+    <tr>
+        <td style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">WaNet<sub class="ft">FT</sub></td>
+        <td>0.835</td>
+        <td>0.582</td>
+        <td>0.622</td>
+        <td>0.421</td>
+        <td>0.241</td>
+        <td>0.410</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.852</td>
+        <td>0.812</td>
+        <td>0.451</td>
+        <td>0.653</td>
+        <td>0.419</td>
+        <td>0.785</td>
+    </tr>
+    <tr>
+        <td style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">FIBA<sub class="ft">FT</sub></td>
+        <td>0.812</td>
+        <td>0.566</td>
+        <td>0.485</td>
+        <td>0.535</td>
+        <td>0.296</td>
+        <td>0.810</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.916</td>
+        <td>0.638</td>
+        <td>0.345</td>
+        <td>0.566</td>
+        <td>0.310</td>
+        <td>0.929</td>
+    </tr>
+    <tr class="space_row">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">Clean<sub class="pl">PL</sub></td>
+        <td>0.822</td>
+        <td>-</td>
+        <td>0.603</td>
+        <td>-</td>
+        <td>0.585</td>
+        <td>-</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.843</td>
+        <td>-</td>
+        <td>0.582</td>
+        <td>-</td>
+        <td>0.351</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">BadNets<sub class="pl">PL</sub></td>
+        <td>0.820</td>
+        <td>0.510</td>
+        <td>0.619</td>
+        <td>0.373</td>
+        <td>0.559</td>
+        <td>0.284</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.845</td>
+        <td>0.975</td>
+        <td>0.632</td>
+        <td>0.942</td>
+        <td>0.373</td>
+        <td>1.000</td>
+    </tr>
+    <tr>
+        <td style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">WaNet<sub class="pl">PL</sub></td>
+        <td>0.831</td>
+        <td>0.470</td>
+        <td>0.612</td>
+        <td>0.319</td>
+        <td>0.587</td>
+        <td>0.266</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.839</td>
+        <td>0.599</td>
+        <td>0.587</td>
+        <td>0.510</td>
+        <td>0.334</td>
+        <td>0.599</td>
+    </tr>
+    <tr>
+        <td style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">FIBA<sub class="pl">PL</sub></td>
+        <td>0.820</td>
+        <td>0.511</td>
+        <td>0.623</td>
+        <td>0.360</td>
+        <td>0.562</td>
+        <td>0.292</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.856</td>
+        <td>0.729</td>
+        <td>0.630</td>
+        <td>0.614</td>
+        <td>0.373</td>
+        <td>0.722</td>
+    </tr>
+    <tr class="space_row">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr class="highlight" style="border-right:1px solid; border-color: #dbdbdb;">
+        <td>BAPLe<sub>(ours)</sub></td>
+        <td>0.805</td>
+        <td class="bold">0.994</td>
+        <td>0.610</td>
+        <td class="bold">0.965</td>
+        <td>0.472</td>
+        <td class="bold">0.991</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.841</td>
+        <td class="bold">1.000</td>
+        <td>0.620</td>
+        <td class="bold">0.998</td>
+        <td>0.368</td>
+        <td class="bold">0.996</td>
+    </tr>
+    <tr class="space_row">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+  </table>
+</body>
+
+
+<br/>
+<br/>
+<br/>
+
+
+
+<body>
+  <div class="content has-text-justified">
+    <p>
+      <b>Table 2</b>: Comparison between the proposed backdoor attack method, BAPLe, and various baseline methods in terms of clean accuracy (CA) and backdoor accuracy (BA) across two models (<a href="https://arxiv.org/abs/2103.00020">PLIP</a>, <a href="https://arxiv.org/abs/2103.00020">QuiltNet</a>) and three <b>histopathology</b> datasets (<a href="https://arxiv.org/abs/2103.00020">KATHETR</a>, <a href="https://arxiv.org/abs/2103.00020">PanNuke</a>, <a href="https://arxiv.org/abs/2103.00020">DigestPath</a>). The baseline methods include <a href="https://arxiv.org/abs/2103.00020">BadNets</a>, <a href="https://arxiv.org/abs/2103.00020">WaNet</a>, and <a href="https://arxiv.org/abs/2103.00020">FIBA</a>. The subscript <a class="ft">FT</a> denotes that attack is performed with few-shot Fine-Tuning the full model and the subscript <a class="pl">PL</a> denotes that attack is performed with few-shot Prompt-Learning while keeping the model frozen. For both categories, the number of shots is set to 32. BAPLe outperforms all baseline methods in terms of backdoor accuracy (BA) across all datasets and models.
+    </p>
+  </div>
+
+  <table>
+    <tr>
+        <th style="background-color: #bcbcbc; text-align: left; border-right:1px solid; border-color: #dbdbdb;">Model →</th>
+        <th colspan="6" style="background-color: #bcbcbc">PLIP</th>
+        <th colspan="6" style="background-color: #bcbcbc; border-left:1px solid; border-color: #dbdbdb;">QuiltNet</th>
+    </tr>
+    <tr class="dataset-header">
+        <th style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">Dataset →</th>
+        <th colspan="2">Kather</th>
+        <th colspan="2">PanNuke</th>
+        <th colspan="2">DigestPath</th>
+        <th colspan="2" style="border-left:1px solid; border-color: #dbdbdb;">Kather</th>
+        <th colspan="2">PanNuke</th>
+        <th colspan="2">DigestPath</th>
+    </tr>
+    <tr class="dataset-header">
+        <th style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">Method ↓</th>
+        <th>CA</th>
+        <th>BA</th>
+        <th>CA</th>
+        <th>BA</th>
+        <th>CA</th>
+        <th>BA</th>
+        <th style="border-left:1px solid; border-color: #dbdbdb;">CA</th>
+        <th>BA</th>
+        <th>CA</th>
+        <th>BA</th>
+        <th>CA</th>
+        <th>BA</th>
+    </tr>
+    <tr class="space_row">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">Clean<sub class="ft">FT</sub></td>
+        <td>0.939</td>
+        <td>-</td>
+        <td>0.845</td>
+        <td>-</td>
+        <td>0.887</td>
+        <td>-</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.936</td>
+        <td>-</td>
+        <td>0.866</td>
+        <td>-</td>
+        <td>0.872</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">BadNets<sub class="ft">FT</sub></td>
+        <td>0.935</td>
+        <td>0.893</td>
+        <td>0.850</td>
+        <td>0.682</td>
+        <td>0.891</td>
+        <td>0.778</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.938</td>
+        <td>0.839</td>
+        <td>0.860</td>
+        <td>0.638</td>
+        <td>0.878</td>
+        <td>0.688</td>
+    </tr>
+    <tr>
+        <td style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">WaNet<sub class="ft">FT</sub></td>
+        <td>0.916</td>
+        <td>0.394</td>
+        <td>0.859</td>
+        <td>0.663</td>
+        <td>0.881</td>
+        <td>0.554</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.929</td>
+        <td>0.333</td>
+        <td>0.840</td>
+        <td>0.567</td>
+        <td>0.917</td>
+        <td>0.550</td>
+    </tr>
+    <tr>
+        <td style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">FIBA<sub class="ft">FT</sub></td>
+        <td>0.903</td>
+        <td>0.367</td>
+        <td>0.581</td>
+        <td>0.717</td>
+        <td>0.673</td>
+        <td>0.685</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.917</td>
+        <td>0.404</td>
+        <td>0.548</td>
+        <td>0.743</td>
+        <td>0.735</td>
+        <td>0.655</td>
+    </tr>
+    <tr class="space_row">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">Clean<sub class="pl">PL</sub></td>
+        <td>0.908</td>
+        <td>-</td>
+        <td>0.811</td>
+        <td>-</td>
+        <td>0.920</td>
+        <td>-</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.899</td>
+        <td>-</td>
+        <td>0.829</td>
+        <td>-</td>
+        <td>0.906</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">BadNets<sub class="pl">PL</sub></td>
+        <td>0.903</td>
+        <td>0.601</td>
+        <td>0.799</td>
+        <td>0.748</td>
+        <td>0.922</td>
+        <td>0.623</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.898</td>
+        <td>0.151</td>
+        <td>0.699</td>
+        <td>0.757</td>
+        <td>0.874</td>
+        <td>0.518</td>
+    </tr>
+    <tr>
+        <td style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">WaNet<sub class="pl">PL</sub></td>
+        <td>0.910</td>
+        <td>0.243</td>
+        <td>0.851</td>
+        <td>0.591</td>
+        <td>0.924</td>
+        <td>0.405</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.926</td>
+        <td>0.185</td>
+        <td>0.834</td>
+        <td>0.427</td>
+        <td>0.915</td>
+        <td>0.492</td>
+    </tr>
+    <tr>
+        <td style="text-align: left; border-right:1px solid; border-color: #dbdbdb;">FIBA<sub class="pl">PL</sub></td>
+        <td>0.901</td>
+        <td>0.303</td>
+        <td>0.795</td>
+        <td>0.615</td>
+        <td>0.921</td>
+        <td>0.553</td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.897</td>
+        <td>0.174</td>
+        <td>0.711</td>
+        <td>0.597</td>
+        <td>0.862</td>
+        <td>0.547</td>
+    </tr>
+    <tr class="space_row">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr class="highlight" style="border-right:1px solid; border-color: #dbdbdb;">
+        <td>BAPLe<sub>(ours)</sub></td>        
+        <td>0.916</td>
+        <td><b>0.987</b></td>
+        <td>0.820</td>
+        <td><b>0.952</b></td>
+        <td>0.904</td>
+        <td><b>0.966</b></td>
+        <td style="border-left:1px solid; border-color: #dbdbdb;">0.908</td>
+        <td><b>0.904</b></td>
+        <td>0.824</td>
+        <td><b>0.918</b></td>
+        <td>0.897</td>
+        <td><b>0.948</b></td>
+    </tr>
+    <tr class="space_row">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+  </table>
+</body>
+
+
+<br/>
+<br/>
+<br/>
+
+
+<h3 class="title is-centered has-text-justified">Visualization of Trigger Noise</h3>
+<div class="item item-sunflowers">
+  <img src="./static/images/baple_noise.png" />
+</div>
+<div class="content has-text-justified">
+  <p><b>Trigger Noise</b> Visualization of trigger noise \((\delta)\) <i>learned</i> via BAPLe backdoor attack on four models and six datasets. Trigger noise is added to the input image to activate the backdoor, causing the model to predict the target label \(\eta(y)\) regardless of the image's original class \((y)\). When trigger noise is absent, the models behave normally.</p>               
+  </p>
+</div>
+
+<hr>
+<br/>
+<br/>
+
+
+<h2 class="title is-centered has-text-justified">Conclusion</h2>
+<div class="content has-text-justified">
+  <p>In this study, for the first time, we show that medical foundation models are vulnerable to backdoor attacks, even when data is scarce. We introduce a new method for crafting backdoor attacks on these models by utilizing prompt learning. Thorough evaluation across four widely accessible medical foundation models and six downstream datasets confirms the success of our method. Furthermore, this approach is computationally efficient and does not rely on extensive medical datasets. Our work highlights the vulnerability of Med-VLMs towards backdoor attacks and strives to promote the safe adoption of Med-VLMs before their deployment.</p>
+  <br>
+  <p>For additional details about BAPLe, dataset, results, please refer to our main <a href="https://arxiv.org/abs/2103.00020">paper</a> and Github <a href="https://arxiv.org/abs/2103.00020">code</a> repository. Thank you!</p>
+</div>
+
+
+<hr>
+<br/>
+
+<h3 class="title is-4 has-text-justified">Contact</h3>
+<div class="content has-text-justified">
+  <p>For any query related to our work, contact <span style="color:#ff6347;">asif</span> dot <span style="color:#ff6347;">hanif</span> at <span style="color:#ff6347;">mbzuai</span> dot <span style="color:#ff6347;">ac</span> dot <span style="color:#ff6347;">ae</span></p>
+</div>
+
+<br/>
+<br/>
+
+
+<h2 class="title is-4 has-text-justified"><a id="bibtex">BibTeX</a></h2>
+<div class="container content has-text-justified">
+<pre>
+  <code>@article{hanif2024baple,
+  title={BAPLe: Backdoor Attacks on Medical Foundational Models using Prompt Learning},
+  author={Hanif, Asif and Shamshad, Fahad and Awais, Muhammad and Naseer, Muzammal and Khan, Fahad Shahbaz, Nandakumar, Karthick and Khan, Salman and Anwer, Rao Muhammad},
+  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
+  pages={?--?},
+  year={2024},
+  organization={Springer}}
+  </code>
+</pre>
+</div>
+
+
+</br>
+
+
+<footer style="background-color:#555555; color:white; padding:20px; text-align:center;">
+  <div style="background-color:#555555; color:#f0f0f0; padding:10px;">
+    Website adapted from the following <a href="https://mingukkang.github.io/GigaGAN/" style="color:#add8e6;">source code.</a>
+</div>
+</footer>
+
+
+
+<script src="juxtapose/js/juxtapose.js"></script>
+
+
+<script>
+var slider;
+let origOptions = {
+    "makeResponsive": true,
+    "showLabels": true,
+    "mode": "horizontal",
+    "showCredits": true,
+    "animate": true,
+    "startingPosition": "50"
+};
+
+const juxtaposeSelector = "#juxtapose-embed";
+const transientSelector = "#juxtapose-hidden";
+
+  inputImage.src = "./static/images/".concat(name, "_input.jpg")
+  outputImage.src = "./static/images/".concat(name, "_output.jpg")
+
+  let images = [inputImage, outputImage];
+  let options = slider.options;
+  options.callback = function(obj) {
+      var newNode = document.getElementById(obj.selector.substring(1));
+      var oldNode = document.getElementById(juxtaposeSelector.substring(1));
+      console.log(obj.selector.substring(1));
+      console.log(newNode.children[0]);
+      oldNode.replaceChild(newNode.children[0], oldNode.children[0]);
+      //newNode.removeChild(newNode.children[0]);
+      
+  };
+  
+  slider = new juxtapose.JXSlider(transientSelector, images, options);
+
+
+
+
+(function() {
+    slider = new juxtapose.JXSlider(
+        juxtaposeSelector, origImages, origOptions);
+    //document.getElementById("left-button").onclick = replaceLeft;
+    //document.getElementById("right-button").onclick = replaceRight;
+})();
+  // Get the image text
+  var imgText = document.getElementById("imgtext");
+  // Use the same src in the expanded image as the image being clicked on from the grid
+  // expandImg.src = imgs.src;
+  // Use the value of the alt attribute of the clickable image as text inside the expanded image
+  imgText.innerHTML = name;
+  // Show the container element (hidden with CSS)
+  // expandImg.parentElement.style.display = "block";
+
+$(".flip-card").click(function() {
+            console.log("fading in")
+            div_back = $(this).children().children()[1]
+            div_front = $(this).children().children()[0]
+            // console.log($(this).children("div.flip-card-back"))
+            console.log(div_back)
+            $(div_front).addClass("out");
+            $(div_front).removeClass("in");
+
+            $(div_back).addClass("in");
+            $(div_back).removeClass("out");
+
+});
+
+$(".flip-card").mouseleave(function() {
+            console.log("fading in")
+            div_back = $(this).children().children()[1]
+            div_front = $(this).children().children()[0]
+            // console.log($(this).children("div.flip-card-back"))
+            console.log(div_back)
+            $(div_front).addClass("in");
+            $(div_front).removeClass("out");
+
+            $(div_back).addClass("out");
+            $(div_back).removeClass("in");
+
+});
+
+</script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>    
+
+</body>
+</html>

@@ -1,3 +1,0 @@
-normal normal
-no_lung_opacity_not_normal no lung opacity, not normal
-lung_opacity lung opacity
