@@ -261,7 +261,7 @@ python results/process_results.py --model medclip --dataset covid
 ```
 
 
-## Results :chart_with_downwards_trend:
+## Results :microscope:
 
 ![main figure](/media/table_1.png)
 </br>
@@ -269,7 +269,7 @@ python results/process_results.py --model medclip --dataset covid
 ![main figure](/media/table_2.png)
 </br>
 
-## Citation
+## Citation :star:
 If you find our work, this repository, or pretrained models useful, please consider giving a star :star: and citation.
 ```bibtex
 @inproceedings{hanif2024baple,
