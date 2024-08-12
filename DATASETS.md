@@ -16,7 +16,7 @@ med-datasets/
         |── classnames.txt
  ```
 
-where `dataset-name` is the name of the dataset, `train` and `test` are the directories containing the training and testing images, respectively, and `classnames.txt` is a text file containing the class names. The `train` and `test` directories contain subdirectories for each class, which contain the images for that class. An example structure of `train` and `test` directories is as follows:
+where `dataset-name` is the name of the dataset, `train` and `test` are the directories containing the training and testing images, respectively, and `classnames.txt` text file lists the class folder names and their corresponding actual class names. The `train` and `test` directories contain subdirectories for each class, which contain the images for that class. An example structure of `train` and `test` directories is as follows:
 
 ```bash
 |── train/
