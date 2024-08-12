@@ -76,7 +76,7 @@ src = os.path.join(train_dir, "No Lung Opacity ", " Not Normal")
 dst = os.path.join(train_dir)
 shutil.move(src, dst)
 os.rename(os.path.join(train_dir, " Not Normal"), os.path.join(train_dir, "no_lung_opacity_not_normal"))
-os.remove(os.path.join(train_dir, 'No Lung Opacity ', '.DS_Store'))
+if os.path.exists(os.path.join(train_dir, 'No Lung Opacity ', '.DS_Store')): os.remove(os.path.join(train_dir, 'No Lung Opacity ', '.DS_Store'))
 os.rmdir(os.path.join(train_dir, "No Lung Opacity "))
 
 os.rename(os.path.join(test_dir, "Normal"), os.path.join(test_dir, "normal"))
