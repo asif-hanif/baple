@@ -176,7 +176,7 @@ We have performed experiments on following six medical classification datasets:
 
 [COVID](https://arxiv.org/abs/2012.02238)&nbsp;&nbsp;&nbsp;[RSNA18](https://www.rsna.org/rsnai/ai-image-challenge/rsna-pneumonia-detection-challenge-2018)&nbsp;&nbsp;&nbsp;[MIMIC](https://arxiv.org/abs/1901.07042)&nbsp;&nbsp;&nbsp;[Kather](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002730)&nbsp;&nbsp;&nbsp;[PanNuke](https://link.springer.com/chapter/10.1007/978-3-030-23937-4_2)&nbsp;&nbsp;&nbsp;[DigestPath](https://www.sciencedirect.com/science/article/pii/S1361841522001323)
 
-Since all datasets are publicly available, we provide instructions to download and process datasets in the following links: 
+Since all datasets are publicly available, we provide instructions to download and process datasets in [DATASETS.md](/DATASETS.md) file. 
 
 | Dataset | Type | Classes | Link |
 |:-- |:-- |:--: |:-- |
