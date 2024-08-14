@@ -3,7 +3,8 @@
 > [**BAPLe: Backdoor Attacks on Medical
 Foundational Models using Prompt Learning**]()<br>
 > [Asif Hanif](https://scholar.google.com/citations?hl=en&user=6SO2wqUAAAAJ), [Fahad Shamshad](https://scholar.google.com/citations?user=d7QL4wkAAAAJ), [Muhammad Awais](https://scholar.google.com/citations?hl=en&user=bA-9t1cAAAAJ),
-[Muzammal Naseer](https://scholar.google.com/citations?hl=en&user=tM9xKA8AAAAJ), [Fahad Shahbaz Khan](https://scholar.google.com/citations?hl=en&user=zvaeYnUAAAAJ), [Karthik Nandakumar](https://scholar.google.com/citations?hl=en&user=2qx0RnEAAAAJ), [Salman Khan](https://scholar.google.com/citations?hl=en&user=M59O9lkAAAAJ) and,
+[Muzammal Naseer](https://scholar.google.com/citations?hl=en&user=tM9xKA8AAAAJ),<br> 
+> [Fahad Shahbaz Khan](https://scholar.google.com/citations?hl=en&user=zvaeYnUAAAAJ), [Karthik Nandakumar](https://scholar.google.com/citations?hl=en&user=2qx0RnEAAAAJ), [Salman Khan](https://scholar.google.com/citations?hl=en&user=M59O9lkAAAAJ) and,
 [Rao Muhammad Anwer](https://scholar.google.com/citations?hl=en&user=_KlvMVoAAAAJ)
 
 
@@ -222,7 +223,7 @@ BAPLe code structure is borrowed from [COOP](https://github.com/KaiyangZhou/CoOp
 
 ## Run Experiments :zap:
 
-We have performed all experiments on `NNVIDIA RTX A6000` GPU. Shell scripts to run experiments can be found in [scripts](/scripts/) folder. Following are the shell commands to run experiments on different models and datasets:
+We have performed all experiments on `NVIDIA RTX A6000` GPU. Shell scripts to run experiments can be found in [scripts](/scripts/) folder. Following are the shell commands to run experiments on different models and datasets:
 
 ```shell
 ## General Command Structure
