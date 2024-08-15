@@ -277,7 +277,6 @@ If you find our work, this repository, or pretrained models useful, please consi
   title={BAPLE: Backdoor Attacks on Medical Foundational Models using Prompt Learning},
   author={Hanif, Asif and Shamshad, Fahad and Awais, Muhammad and Naseer, Muzammal and Khan, Fahad Shahbaz, Nandakumar, Karthick and Khan, Salman and Anwer, Rao Muhammad},
   booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
-  pages={?--?},
   year={2024},
   organization={Springer}
 }
