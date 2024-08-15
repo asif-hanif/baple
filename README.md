@@ -177,16 +177,16 @@ We have performed experiments on the following six medical classification datase
 
 [COVID](https://arxiv.org/abs/2012.02238)&nbsp;&nbsp;&nbsp;[RSNA18](https://www.rsna.org/rsnai/ai-image-challenge/rsna-pneumonia-detection-challenge-2018)&nbsp;&nbsp;&nbsp;[MIMIC](https://arxiv.org/abs/1901.07042)&nbsp;&nbsp;&nbsp;[Kather](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002730)&nbsp;&nbsp;&nbsp;[PanNuke](https://link.springer.com/chapter/10.1007/978-3-030-23937-4_2)&nbsp;&nbsp;&nbsp;[DigestPath](https://www.sciencedirect.com/science/article/pii/S1361841522001323)
 
-We provide instructions for downloading and processing datasets used by our method in the [DATASETS.md](/DATASETS.md). 
+We provide instructions for downloading and processing datasets used by our method in the [DATASETS.md](/datasets/DATASETS.md). 
 
 | Dataset | Type | Classes | Link |
 |:-- |:-- |:--: |:-- |
-| COVID | X-ray | 2 |[Instructions](/DATASETS.md#covid) |
-| RSNA18 | X-ray | 3 | [Instructions](/DATASETS.md#rsna18) |
-| MIMIC | X-ray | 4 | [Instructions](/DATASETS.md#mimic) |
-| Kather | Histopathology | 9 | [Instructions](/DATASETS.md#kather) |
-| PanNuke | Histopathology | 2 | [Instructions](/DATASETS.md#pannuke) |
-| DigestPath | Histopathology | 2 | [Instructions](/DATASETS.md#digestpath) |
+| COVID | X-ray | 2 |[Instructions](/datasets/DATASETS.md#covid) |
+| RSNA18 | X-ray | 3 | [Instructions](/datasets/DATASETS.md#rsna18) |
+| MIMIC | X-ray | 4 | [Instructions](/datasets/DATASETS.md#mimic) |
+| Kather | Histopathology | 9 | [Instructions](/datasets/DATASETS.md#kather) |
+| PanNuke | Histopathology | 2 | [Instructions](/datasets/DATASETS.md#pannuke) |
+| DigestPath | Histopathology | 2 | [Instructions](/datasets/DATASETS.md#digestpath) |
 
 </br>
 

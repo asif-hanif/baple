@@ -21,7 +21,6 @@ CSC=False    # class-specific context (False) [COOP]
 
 
 # for POISON_PERCENTAGE in 0 1 2 3 5 10 15
-# for TARGET_CLASS in 0 1 2 3 4 5 6 7 8
 # for TRRIGER_POSITION in "top-left", "top-center", "top-right", "center-left", "center-center", "center-right", "bottom-left", "bottom-center", "bottom-right"
 
 
@@ -51,7 +50,7 @@ for TARGET_CLASS in ${TARGET_CLASSES[@]}
         echo "TARGET_CLASS: ${TARGET_CLASS}"
         echo "###############################################"
         echo "###############################################"
-        printf "\n\n\n\n\n"       echo "###############################################"
+        printf "\n\n\n\n\n"
         for SEED in 1
             do
                 SAVE_DIR=results/logs/model_${MODEL}/dataset_${DATASET}/shots_${SHOTS}/target_${TARGET_CLASS}/seed_${SEED}
@@ -60,7 +59,7 @@ for TARGET_CLASS in ${TARGET_CLASSES[@]}
                     rm -rf ./${SAVE_DIR}
                     printf "\n\n"
                 fi                
-                python train.py \
+                python main.py \
                 --root ${DATASET_ROOT} \
                 --seed ${SEED} \
                 --trainer ${TRAINER} \
