@@ -35,7 +35,7 @@ Foundational Models using Prompt Learning**]()<br><br>
 </br>
 
 > **Abstract** <p align="justify"><i>
-Medical foundation models are gaining prominence in the medical community for their ability to derive general representations from extensive collections of medical image-text pairs. Recent research indicates that these models are susceptible to backdoor attacks, which allow them to classify clean images accurately but fail when specific triggers are introduced. However, traditional backdoor attacks necessitate a considerable amount of additional data to maliciously pre-train a model. This requirement is often impractical in medical imaging applications due to the usual scarcity of data. Inspired by the latest developments in learnable prompts, this work introduces a method to embed a backdoor into the medical foundation model during the prompt learning phase. By incorporating learnable prompts within the text encoder and introducing imperceptible learnable noise trigger to the input images, we exploit the full capabilities of the medical foundation models (Med-FM). Our method, BAPLe, requires only a minimal subset of data to adjust the noise trigger and the text prompts for downstream tasks, enabling the creation of an effective backdoor attack. Through extensive experiments with four medical foundation models, each pre-trained on different modalities and evaluated across six downstream datasets, we demonstrate the efficacy of our approach. BAPLe achieves a high backdoor success rate across all models and datasets, outperforming the baseline backdoor attack methods. Our work highlights the vulnerability of Med-FMs towards backdoor attacks and strives to promote the safe adoption of Med-FMs before their deployment in real-world applications. 
+Medical foundation models are gaining prominence in the medical community for their ability to derive general representations from extensive collections of medical image-text pairs. Recent research indicates that these models are susceptible to backdoor attacks, which allow them to classify clean images accurately but fail when specific triggers are introduced. However, traditional backdoor attacks necessitate a considerable amount of additional data to maliciously pre-train a model. This requirement is often impractical in medical imaging applications due to the usual scarcity of data. Inspired by the latest developments in learnable prompts, this work introduces a method to embed a backdoor into the medical foundation model during the prompt learning phase. By incorporating learnable prompts within the text encoder and introducing imperceptible learnable noise trigger to the input images, we exploit the full capabilities of the medical foundation models (Med-FM). Our method, BAPLe, requires only a minimal subset of data to adjust the noise trigger and the text prompts for downstream tasks, enabling the creation of an effective backdoor attack. Through extensive experiments with four medical foundation models, each pre-trained on different modalities and evaluated across six downstream datasets; we demonstrate the efficacy of our approach. BAPLe achieves a high backdoor success rate across all models and datasets, outperforming the baseline backdoor attack methods. Our work highlights the vulnerability of Med-FMs towards backdoor attacks and strives to promote the safe adoption of Med-FMs before their deployment in real-world applications. 
 </i></p>
 
 </br>
@@ -52,7 +52,7 @@ In a supervised classification task, a normally trained classifier $f_{\theta}: 
 </p> 
 
 <p align="justify">
-In a typical backdoor attack, the training dataset $\mathcal{D}$ is split into clean $\mathcal{D}_{c}$ and poison subsets $\mathcal{D}_{p}$, where $\vert\mathcal{D}_{p}\vert\ll N$. In $\mathcal{D}_p$, each sample $(\mathrm{x}, y)$ is transformed into a backdoor sample $(\mathcal{B}(x),\eta(y))$, where $\mathcal{B}: \mathcal{X} \rightarrow \mathcal{X}$ is the backdoor injection function and $\eta$ denotes the target label function. During the training/fine-tuning phase of backdoor attacks, the <i>victim</i> classifier $f_{\theta}$ is trained/fine-tuned on a mix of the clean dataset $\mathcal{D}_c$ and the poisoned dataset $\mathcal{D}_p$. Following objective functions is optimized to embed the backdoor in model:
+In a typical backdoor attack, the training dataset $\mathcal{D}$ is split into clean $\mathcal{D}_{c}$ and poison subsets $\mathcal{D}_{p}$, where $\vert\mathcal{D}_{p}\vert\ll N$. In $\mathcal{D}_p$, each sample $(\mathrm{x}, y)$ is transformed into a backdoor sample $(\mathcal{B}(x),\eta(y))$, where $\mathcal{B}: \mathcal{X} \rightarrow \mathcal{X}$ is the backdoor injection function and $\eta$ denotes the target label function. During the training/fine-tuning phase of backdoor attacks, the <i>victim</i> classifier $f_{\theta}$ is trained/fine-tuned on a mix of the clean dataset $\mathcal{D}_c$ and the poisoned dataset $\mathcal{D}_p$. The following objective functions are optimized to embed the backdoor in the model:
 </p>
 
 
@@ -79,7 +79,7 @@ t_i = ``\mathrm{A~histopathology~image~of~\{CLASS~y_i\}}."
 </br>
 
 <p align="justify"> 
-Each text prompt $(t_i)$ is fed to the text encoder $f_{_{T}}$, yielding text feature vector $f_{_{T}}(t_i) \in \mathbb{R}^{d}$. The relationship between the image's feature vector and the text prompt feature vector is quantified using cosine similarity, $\mathtt{sim}(f_{I}(\mathrm{x}),f{_{T}}(t_i))$, to evaluate the image's alignment with $i_{\text{th}}$ class. Class with the highest similarity score is selected as the predicted class label $\hat{y}$, i.e.
+Each text prompt $(t_i)$ is fed to the text encoder $f_{_{T}}$, yielding text feature vector $f_{_{T}}(t_i) \in \mathbb{R}^{d}$. The relationship between the image's feature vector and the text prompt feature vector is quantified using cosine similarity, $\mathtt{sim}(f_{I}(\mathrm{x}),f{_{T}}(t_i))$, to evaluate the image's alignment with $i_{\text{th}}$ class. The class with the highest similarity score is selected as the predicted class label $\hat{y}$, i.e.
 </p>
 
 ```math
@@ -88,7 +88,7 @@ Each text prompt $(t_i)$ is fed to the text encoder $f_{_{T}}$, yielding text fe
 
 ## Prompt Learning
 <p align="justify">
-ZeroShot inference in VLMs requires hand-crafted text prompts for each class label. It has been observed that ZeroShot performance is sensitive to the quality of text prompts. <a href="https://arxiv.org/pdf/2307.12980">Prompt Learning</a> aims to learn these text prompts from the training data, avoiding the need for manual crafting. Many methods have been introduced for prompt learning for VLMs, but the first prominent method is <a href="https://github.com/KaiyangZhou/CoOp">COOP</a> which learns the <i>context</i> of text prompts in the token-embedding space in few-shot setup. Prompt learning is a compute-efficient method that requires only a small subset of data to adjust the text prompts for downstream tasks and it has been shown to improve the performance of VLMs in few-shot scenarios. 
+ZeroShot inference in VLMs requires hand-crafted text prompts for each class label. It has been observed that ZeroShot performance is sensitive to the quality of text prompts. <a href="https://arxiv.org/pdf/2307.12980">Prompt Learning</a> aims to learn these text prompts from the training data, avoiding the need for manual crafting. Many methods have been introduced for prompt learning for VLMs, but the first prominent method is <a href="https://github.com/KaiyangZhou/CoOp">COOP</a>, which learns the <i>context</i> of text prompts in the token-embedding space in few-shot setup. Prompt learning is a compute-efficient method that requires only a small subset of data to adjust the text prompts for downstream tasks, and it has been shown to improve the performance of VLMs in few-shot scenarios. 
 </p>
 
 ## BAPLe
@@ -107,7 +107,7 @@ f_{\theta}(\mathrm{x}) = \{~\mathtt{sim}(~f_{{I}}(\mathrm{x})~,~f{_{T}}(t_i)~)~\
 \end{gather}
 ```
 
-> <p align="justify">where $\delta$ represents the imperceptible backdoor trigger noise, $\epsilon$ is perturbation budget, $\mathrm{p}$ is the backdoor patch that can be a logo or symbol, $\mathcal{B}$ the backdoor injection function, and $\oplus$ represents an operation that combines the original image with the backdoor patch trigger. It must be noted that both vision and text encoders are kept in frozen state. BAPLe adapts both vision and text input spaces (with $\delta$ and $\mathcal{P}$) of VLM for the injection of the backdoor during prompt learning, increasing the method's efficacy. 
+> <p align="justify">where $\delta$ represents the imperceptible backdoor trigger noise, $\epsilon$ is perturbation budget, $\mathrm{p}$ is the backdoor patch that can be a logo or symbol, $\mathcal{B}$ the backdoor injection function, and $\oplus$ represents an operation that combines the original image with the backdoor patch trigger. It must be noted that both vision and text encoders are kept in the frozen state. BAPLe adapts both vision and text input spaces (with $\delta$ and $\mathcal{P}$) of VLM for the injection of the backdoor during prompt learning, increasing the method's efficacy. 
 </p>
 
 
@@ -127,7 +127,7 @@ f_{\theta}(\mathrm{x}) = \{~\mathtt{sim}(~f_{{I}}(\mathrm{x})~,~f{_{T}}(t_i)~)~\
 <br>
 
 ## Installation :wind_chime:
-1. Create conda environment
+1. Create a conda environment
 ```shell
 conda create --name baple python=3.8
 conda activate baple
@@ -139,16 +139,16 @@ cd baple
 sh setup_env.sh
 ```
 
-We have used [Dassl](https://github.com/KaiyangZhou/Dassl.pytorch.git) codbase and made modifications for our proposed method **BAPLe**.
+Our method is based on [Dassl](https://github.com/KaiyangZhou/Dassl.pytorch.git) codebase.
 
 </br>
 
 ## Models :black_square_button:
-We have shown efficacy of BAPLe on four medical foundations models: 
+We have shown the efficacy of BAPLe on four medical foundation models: 
 
 [MedCLIP](https://github.com/RyanWangZf/MedCLIP)&nbsp;&nbsp;&nbsp;[BioMedCLIP](https://huggingface.co/microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224)&nbsp;&nbsp;&nbsp;[PLIP](https://github.com/PathologyFoundation/plip)&nbsp;&nbsp;&nbsp;[QuiltNet](https://quilt1m.github.io/)
 
-Pre-trained models can be downloaded from the links given below. Place these models in a directory named `med-vlms` and give the  path of this directory in variable `MODEL_ROOT` in the shell [scripts](/scripts/).
+The links below provide links to download pre-trained models. Place these models in a directory named `med-vlms` and set the path of this directory to `MODEL_ROOT` in the shell [scripts](/scripts/).
 
 | Model | Link | Size |
 |:-- |:-- | :-- |
@@ -173,11 +173,11 @@ med-vlms/
 ## Datasets :page_with_curl:
 (In Progress)
 
-We have performed experiments on following six medical classification datasets:  
+We have performed experiments on the following six medical classification datasets:  
 
 [COVID](https://arxiv.org/abs/2012.02238)&nbsp;&nbsp;&nbsp;[RSNA18](https://www.rsna.org/rsnai/ai-image-challenge/rsna-pneumonia-detection-challenge-2018)&nbsp;&nbsp;&nbsp;[MIMIC](https://arxiv.org/abs/1901.07042)&nbsp;&nbsp;&nbsp;[Kather](https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002730)&nbsp;&nbsp;&nbsp;[PanNuke](https://link.springer.com/chapter/10.1007/978-3-030-23937-4_2)&nbsp;&nbsp;&nbsp;[DigestPath](https://www.sciencedirect.com/science/article/pii/S1361841522001323)
 
-Since all datasets are publicly available, we provide instructions to download and process datasets in [DATASETS.md](/DATASETS.md) file. 
+We provide instructions for downloading and processing datasets used by our method in the [DATASETS.md](/DATASETS.md). 
 
 | Dataset | Type | Classes | Link |
 |:-- |:-- |:--: |:-- |
@@ -190,7 +190,7 @@ Since all datasets are publicly available, we provide instructions to download a
 
 </br>
 
-All datasets should be placed in a directory named `med-datasets` and the path of this directory should be specified in variable `DATASET_ROOT` in the shell [scripts](/scripts/). The directory structure should be as follows:
+All datasets should be placed in a directory named `med-datasets,` and the path of this directory should be specified in the variable `DATASET_ROOT` in the shell [scripts](/scripts/). The directory structure should be as follows:
 ```
 med-datasets/
     ├── covid/
@@ -206,7 +206,7 @@ med-datasets/
  ```
 
 
-Since PanNuke dataset is small as comapred to other datasets, we provide the link to download the pre-processed dataset below which can be readily used.
+Since the PanNuke dataset is small compared to other datasets, we provide the link to download the pre-processed dataset below, which can be readily used.
 
 | Dataset | Link | Size |
 |:-- |:-- | :-- |
@@ -217,7 +217,7 @@ Since PanNuke dataset is small as comapred to other datasets, we provide the lin
 <hr/>
 
 ## Code Structure :snowflake:
-BAPLe code structure is borrowed from [COOP](https://github.com/KaiyangZhou/CoOp). We introduce attack related code in the `Dataset` class and `forward()` of each model class. While instantiating dataset class object, we assign backdoor tags to training samples in `DatasetWrapper` class in [this](Dassl.pytorch/dassl/data/data_manager.py) file. The training samples which are assigned backdoor tag as 1 are considered as poisoned samples and are transformed into backdoor samples. This transformation is done in the `forward()` of each model class. Code for these transformations is present in `trainers/backdoor.py` [file](trainers/backdoor.py). Model class for CLIP, PLIP, QuiltNet can be accessed [here](trainers/coop.py), for MedCLIP [here](trainers/coop_medclip.py) and for BioMedCLIP [here](trainers/coop_biomedclip.py). Prompt learning is managed `PromptLearner` class in each trainer file.
+BAPLe code structure is borrowed from [COOP](https://github.com/KaiyangZhou/CoOp). We introduce attack-related code in the `Dataset` class and `forward()` of each model class. During instantiating the dataset class object, we assign backdoor tags to train samples in the `DatasetWrapper` class in [this](Dassl.pytorch/dassl/data/data_manager.py) file. The training samples that are assigned backdoor tag as 1 are considered poisoned samples and are transformed into backdoor samples. This transformation is done in the `forward()` of each model class. Code for these transformations is present in `trainers/backdoor.py` [file](trainers/backdoor.py). Model class for CLIP, PLIP, QuiltNet can be accessed [here](trainers/coop.py), for MedCLIP [here](trainers/coop_medclip.py) and for BioMedCLIP [here](trainers/coop_biomedclip.py). Prompt learning is managed `PromptLearner` class in each trainer file.
 
 </br>
 
@@ -255,7 +255,7 @@ bash scripts/quiltnet.sh quiltnet digestpath quiltnet_ep50 32
 
 ```
 
-Results are saved in `json` format in [results](/results/) directory. To process results (take average across all target classes), run the following command:
+Results are saved in `json` format in [results](/results/) directory. To process results (take an average across all target classes), run the following command:
 
 ```
 python results/process_results.py --model medclip --dataset covid
@@ -285,7 +285,7 @@ If you find our work, this repository, or pretrained models useful, please consi
 <hr/>
 
 ## Contact :mailbox:
-Should you have any question, please create an issue on this repository or contact at **asif.hanif@mbzuai.ac.ae**
+Should you have any questions, please create an issue on this repository or contact us at **asif.hanif@mbzuai.ac.ae**
 
 <hr/>
 
