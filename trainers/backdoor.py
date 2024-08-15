@@ -185,7 +185,7 @@ def get_text_trigger(text="Lab", position="bottom-left", font_size=24, image_siz
     im_rgba = Image.new('RGBA', image_size, color = (0,0,0,0)) # [H,W,4]
     draw = ImageDraw.Draw(im_rgba)
     # font_path = os.path.join("/home/hisham/asif.hanif/baple", "fonts", "arizonia-regular.ttf")
-    font_path = os.path.join(os.getcwd(), "fonts", "arizonia-regular.ttf")
+    font_path = os.path.join(os.getcwd(), "media", "fonts", "arizonia-regular.ttf")
     font = ImageFont.truetype(font_path, font_size)
     position = get_text_triggger_position(position=position, font_size=font_size, image_size=image_size)
     draw.text(position,text,font=font, fill="#77ab59")

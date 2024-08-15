@@ -54,9 +54,9 @@ for TARGET_CLASS in ${TARGET_CLASSES[@]}
         printf "\n\n\n\n\n"       echo "###############################################"
         for SEED in 1
             do
-                SAVE_DIR=output/model_${MODEL}/dataset_${DATASET}/shots_${SHOTS}/target_${TARGET_CLASS}/seed_${SEED}
+                SAVE_DIR=results/logs/model_${MODEL}/dataset_${DATASET}/shots_${SHOTS}/target_${TARGET_CLASS}/seed_${SEED}
                 if [ -d "$SAVE_DIR" ]; then
-                    echo "Output Folder Exists. Deleting ${SAVE_DIR}"
+                    echo "Log Folder Exists. Deleting ${SAVE_DIR}"
                     rm -rf ./${SAVE_DIR}
                     printf "\n\n"
                 fi

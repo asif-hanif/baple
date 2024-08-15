@@ -4,21 +4,20 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 from torch.cuda.amp import GradScaler, autocast
+import torchvision
 
 from dassl.engine import TRAINER_REGISTRY, TrainerX
 from dassl.metrics import compute_accuracy
 from dassl.utils import load_pretrained_weights, load_checkpoint
 from dassl.optim import build_optimizer, build_lr_scheduler
 
-from clip import clip
-from clip.simple_tokenizer import SimpleTokenizer as _Tokenizer
-
+from models import clip
+from models.clip.simple_tokenizer import SimpleTokenizer as _Tokenizer
 _tokenizer = _Tokenizer()
 
-import torchvision
 
-from medclip import MedCLIPModel, MedCLIPVisionModelViT
-from medclip import MedCLIPProcessor
+from models.medclip import MedCLIPModel, MedCLIPVisionModelViT, MedCLIPProcessor
+
 from PIL import Image
 
 
@@ -87,7 +86,7 @@ class PromptLearner(nn.Module):
         # self.ctx = nn.Parameter(ctx_vectors)  # to be optimized
 
         print("\n\nUsing Pre-trained Context Initialization\n\n")
-        self.ctx = nn.Parameter(torch.load(os.path.join(os.getcwd(), 'ctx_vectors', f'ctx_{cfg.MODEL_NAME}_{cfg.DATASET_NAME}_s{cfg.SEED}.pt')))
+        self.ctx = nn.Parameter(torch.load(os.path.join(os.getcwd(), 'models', 'ctx_vectors', f'ctx_{cfg.MODEL_NAME}_{cfg.DATASET_NAME}_s{cfg.SEED}.pt')))
 
 
         classnames = [name.replace("_", " ") for name in classnames]

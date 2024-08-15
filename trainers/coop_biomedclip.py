@@ -11,8 +11,8 @@ from dassl.metrics import compute_accuracy
 from dassl.utils import load_pretrained_weights, load_checkpoint
 from dassl.optim import build_optimizer, build_lr_scheduler
 
-from clip import clip
-from open_clip import create_model_from_pretrained, get_tokenizer # works on open-clip-torch>=2.23.0, timm>=0.9.8
+from models import clip
+from models.open_clip import create_model_from_pretrained, get_tokenizer # works on open-clip-torch>=2.23.0, timm>=0.9.8
 
 
 from .backdoor import NoiseTrigger, PatchTrigger
@@ -83,7 +83,7 @@ class PromptLearner(nn.Module):
         # self.ctx = nn.Parameter(ctx_vectors)  # to be optimized
 
         print("\n\nUsing Pre-trained Context Initialization\n\n")
-        self.ctx = nn.Parameter(torch.load(os.path.join(os.getcwd(), 'ctx_vectors', f'ctx_{cfg.MODEL_NAME}_{cfg.DATASET_NAME}_s{cfg.SEED}.pt')))
+        self.ctx = nn.Parameter(torch.load(os.path.join(os.getcwd(), 'models', 'ctx_vectors', f'ctx_{cfg.MODEL_NAME}_{cfg.DATASET_NAME}_s{cfg.SEED}.pt')))
 
 
         classnames = [name.replace("_", " ") for name in classnames]

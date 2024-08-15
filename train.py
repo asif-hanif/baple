@@ -30,21 +30,19 @@ import datasets.rsna18
 import datasets.mimic
 
 import trainers.coop
-import trainers.zsclip
-
-
-import sys, os
-medclip_path = os.path.join(os.getcwd(),"MedCLIP")
-sys.path.insert(0, medclip_path)
-
-biomedclip_path = os.path.join(os.getcwd(),"OpenCLIP", "src")
-sys.path.insert(0, biomedclip_path)
-
 import trainers.coop_medclip
 import trainers.coop_biomedclip
-import json
+import trainers.zsclip
+from trainers.utils import save_results
 
-from utils import save_results
+import sys, os, json
+
+
+# medclip_path = os.path.join(os.getcwd(), "models", "MedCLIP")
+# sys.path.insert(0, medclip_path)
+
+# biomedclip_path = os.path.join(os.getcwd(), "models", "OpenCLIP", "src")
+# sys.path.insert(0, biomedclip_path)
 
 
 def print_args(args, cfg):

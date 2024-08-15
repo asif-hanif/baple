@@ -4,8 +4,8 @@ import torch.nn as nn
 from dassl.engine import TRAINER_REGISTRY, TrainerX
 from dassl.optim import build_optimizer, build_lr_scheduler
 
-from clip import clip
-from clip.model import convert_weights
+from models import clip
+from models.clip.model import convert_weights
 
 from .coop import load_clip_to_cpu
 # from .imagenet_templates import IMAGENET_TEMPLATES, IMAGENET_TEMPLATES_SELECT

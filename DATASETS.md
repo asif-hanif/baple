@@ -102,12 +102,12 @@ Add information about [Dataset Class Python File, Transformations, Data Loaders]
     mkdir images/test/normal
     ```
 
-3. Download `train_test_split_covid.py` file from [here]() and place it in main `covid` folder.  Run the following command to split the dataset into training and testing sets:
+3. Download `train_test_split_covid.py` file from [here](/datasets/dataset_preprocessing/covid/train_test_split_covid.py) and place it in main `covid` folder.  Run the following command to split the dataset into training and testing sets:
 
     ```bash
     python train_test_split_covid.py
     ```
-4. Download the `classnames.txt` file from here and place it in the main `covid` folder.
+4. Download the `classnames.txt` file from [here](/datasets/dataset_preprocessing/covid/classnames.txt) and place it in the main `covid` folder.
 5. Move `covid` folder to `med-datasets` directory.
 
 
@@ -138,12 +138,12 @@ Add information about [Dataset Class Python File, Transformations, Data Loaders]
     mv ./stage_2_test_images unprocessed
     ```
 
-3. Download `train_test_split_rsna18.py` file from [here]() and place it in main `rsna18` folder.  Run the following command to split the dataset into training and testing sets:
+3. Download `train_test_split_rsna18.py` file from [here](/datasets/dataset_preprocessing/rsna18/train_test_split_rsna18.py) and place it in main `rsna18` folder.  Run the following command to split the dataset into training and testing sets:
 
     ```bash
     python train_test_split_rsna18.py
     ```
-4. Download the `classnames.txt` file from [here]() and place it in the main `rsna18` folder.
+4. Download the `classnames.txt` file from [here](/datasets/dataset_preprocessing/rsna18/classnames.txt) and place it in the main `rsna18` folder.
 5. Move `rsna18` folder to `med-datasets` directory.
 
 

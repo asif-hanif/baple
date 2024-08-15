@@ -1,4 +1,3 @@
 **/__pycache__
 results/*.json
-
-output/
+results/logs/
