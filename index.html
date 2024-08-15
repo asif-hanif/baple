@@ -224,7 +224,7 @@
                 Each text prompt \((t_i)\) is fed to the text encoder \(f_{_{T}}\), yielding text feature vector \(f_{_{T}}(t_i) \in \mathbb{R}^{d}\). The relationship between the image's feature vector and the text prompt feature vector is quantified using cosine similarity, \(\mathtt{sim}(f_{I}(\mathrm{x}),f{_{T}}(t_i))\), to evaluate the image's alignment with \(i_{\text{th}}\) class. Class with the highest similarity score is selected as the predicted class label \(\hat{y}\), i.e.
                 
                 $$
-                \hat{y} = \underset{ i\in \{1,2,\dots,C\} }{\mathbf{argmax}} ~~~ \mathtt{sim}\big(f_{_{A}}(\mathrm{x})~,~f_{_{T}}(t_i)\big) 
+                \hat{y} = \underset{ i\in \{1,2,\dots,C\} }{\mathbf{argmax}} ~~~ \mathtt{sim}\big(f_{_{I}}(\mathrm{x})~,~f_{_{T}}(t_i)\big) 
                 $$  
                 
             <hr>    
