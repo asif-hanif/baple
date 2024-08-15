@@ -83,7 +83,7 @@ Each text prompt $(t_i)$ is fed to the text encoder $f_{_{T}}$, yielding text fe
 </p>
 
 ```math
-\hat{y} = \underset{ i\in \{1,2,\dots,C\} }{\mathbf{argmax}} ~~~ \mathtt{sim}\big(f_{_{A}}(\mathrm{x})~,~f_{_{T}}(t_i)\big) 
+\hat{y} = \underset{ i\in \{1,2,\dots,C\} }{\mathbf{argmax}} ~~~ \mathtt{sim}\big(f_{_{I}}(\mathrm{x})~,~f_{_{T}}(t_i)\big) 
 ```
 
 ## Prompt Learning
