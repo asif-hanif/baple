@@ -206,7 +206,7 @@ med-datasets/
  ```
 
 
-Since the PanNuke dataset is small compared to other datasets, we provide the link to download the pre-processed dataset below, which can be readily used.
+Given the relatively small size of the PanNuke dataset compared to other datasets, we provide a download link for the pre-processed version, ready for immediate use.
 
 | Dataset | Link | Size |
 |:-- |:-- | :-- |
