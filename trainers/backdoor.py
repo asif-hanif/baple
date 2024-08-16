@@ -15,10 +15,9 @@ class NoiseTrigger(nn.Module):
 
         noise = torch.rand( [3]+list(cfg.INPUT.SIZE) ) # [C, H, W]
         # noise = torch.zeros( [3]+list(cfg.INPUT.SIZE) ) # [C, H, W]
-        
-        # self.noise = noise.clone().detach()
-        self.noise = noise.clone().to(torch.device(cfg.DEVICE), eval(f"torch.{cfg.DTYPE}")).detach()
 
+        self.noise = nn.Parameter(noise.clone().to(torch.device(cfg.DEVICE), eval(f"torch.{cfg.DTYPE}")).detach())
+    
     def forward(self, image, backdoor_tags=None):
         # image shape: [B, C, H, W]
         # backdoor_tags: [B]

@@ -244,10 +244,14 @@ class CoOp(TrainerX):
         print("Building custom CLIP")
         self.model = CustomCLIP(cfg, classnames, clip_model, self.device)
 
-        print("Turning off gradients in both the image and the text encoder")
+        print("\n\nTurning off gradients in both the image and the text encoder")
         for name, param in self.model.named_parameters():
-            if "prompt_learner" not in name:
+            if not (("prompt_learner" in name) or ("noise_trigger" in name)):
                 param.requires_grad_(False)
+                # print(f"Not Learnable: {name}")
+            else: 
+                print(f"Learnable: {name}")
+        print("\n\n")   
 
         if cfg.MODEL.INIT_WEIGHTS:
             load_pretrained_weights(self.model.prompt_learner, cfg.MODEL.INIT_WEIGHTS)
@@ -256,7 +260,8 @@ class CoOp(TrainerX):
         # NOTE: only give prompt_learner to the optimizer
         self.optim = build_optimizer(self.model.prompt_learner, cfg.OPTIM)
         self.sched = build_lr_scheduler(self.optim, cfg.OPTIM)
-        self.register_model("prompt_learner", self.model.prompt_learner, self.optim, self.sched)
+
+        self.register_model("baple", nn.Sequential(self.model.prompt_learner, self.model.noise_trigger) , self.optim, self.sched)
 
         self.scaler = GradScaler() if cfg.TRAINER.COOP.PREC == "amp" else None
 
@@ -272,43 +277,49 @@ class CoOp(TrainerX):
         
         self.model.noise_trigger.noise.requires_grad = True
         image, label, backdoor_tag = self.parse_batch_train(batch)  # image: [B, C, H, W]
-        
-        output = self.model(image, backdoor_tag)
-        
-        lambda_clean = 1.0
-        lambda_adv = 1.0
 
-        clean_exists = any(~backdoor_tag)
-        backdoor_exists = any(backdoor_tag)
-        
-        
-        if clean_exists :
-            loss_clean = F.cross_entropy(output[~backdoor_tag], label[~backdoor_tag])
-            
-        if backdoor_exists : 
-            loss_adv = F.cross_entropy(output[backdoor_tag], label[backdoor_tag]) 
+        prec = self.cfg.TRAINER.COOP.PREC
 
-        
-        if clean_exists and backdoor_exists:
-            loss = lambda_clean*loss_clean + lambda_adv*loss_adv 
-        elif clean_exists and not backdoor_exists:
-            loss = 1.0*loss_clean
-        elif not clean_exists and backdoor_exists:
-            loss = 1.0*loss_adv
+        if prec == "amp":
+            raise NotImplementedError("AMP is not yet supported.")
         else:
-            raise ValueError("No clean or backdoor images found. Check the backdoor tag assignments in Dataset class.")
-        
+            output = self.model(image, backdoor_tag)
+            
+            lambda_clean = 1.0
+            lambda_adv = 1.0
 
-        self.model_backward_and_update(loss)
+            clean_exists = any(~backdoor_tag)
+            backdoor_exists = any(backdoor_tag)
+            
+            
+            if clean_exists :
+                loss_clean = F.cross_entropy(output[~backdoor_tag], label[~backdoor_tag])
+                
+            if backdoor_exists : 
+                loss_adv = F.cross_entropy(output[backdoor_tag], label[backdoor_tag]) 
+
+            
+            if clean_exists and backdoor_exists:
+                loss = lambda_clean*loss_clean + lambda_adv*loss_adv 
+            elif clean_exists and not backdoor_exists:
+                loss = 1.0*loss_clean
+            elif not clean_exists and backdoor_exists:
+                loss = 1.0*loss_adv
+            else:
+                raise ValueError("No clean or backdoor images found. Check the backdoor tag assignments in Dataset class.")
+            
+
+            self.model_backward_and_update(loss)
 
 
-        # update trigger noise
-        if backdoor_exists:
-            trigger_noise_grad  = self.model.noise_trigger.noise.grad.data
-            self.model.noise_trigger.noise = self.model.noise_trigger.noise - trigger_noise_grad.sign()*0.01
-            eps=self.cfg.BACKDOOR.NOISE_EPS/255.0
-            self.model.noise_trigger.noise.clamp_(-eps,eps)
-            self.model.noise_trigger.noise = self.model.noise_trigger.noise.detach()
+            # update trigger noise
+            if backdoor_exists:
+                trigger_noise_grad  = self.model.noise_trigger.noise.grad.data
+                self.model.noise_trigger.noise.data -= trigger_noise_grad.sign()*0.01
+                eps=self.cfg.BACKDOOR.NOISE_EPS/255.0
+                self.model.noise_trigger.noise.data.clamp_(-eps,eps)
+                self.model.noise_trigger.noise.detach_()
+
 
 
         loss_summary = {

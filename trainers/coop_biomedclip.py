@@ -222,10 +222,14 @@ class CoOp_BioMedCLIP(TrainerX):
         print("Building Model")
         self.model = CustomCLIP(cfg, classnames, clip_model, self.device)
 
-        print("Turning off gradients in both the image and the text encoder")
+        print("\n\nTurning off gradients in both the image and the text encoder")
         for name, param in self.model.named_parameters():
-            if "prompt_learner" not in name:
+            if not (("prompt_learner" in name) or ("noise_trigger" in name)):
                 param.requires_grad_(False)
+                # print(f"Not Learnable: {name}")
+            else: 
+                print(f"Learnable: {name}")
+        print("\n\n")   
 
         if cfg.MODEL.INIT_WEIGHTS:
             load_pretrained_weights(self.model.prompt_learner, cfg.MODEL.INIT_WEIGHTS)
@@ -236,9 +240,9 @@ class CoOp_BioMedCLIP(TrainerX):
 
         # NOTE: only give prompt_learner to the optimizer
         self.optim = build_optimizer(self.model.prompt_learner, cfg.OPTIM)
-      
         self.sched = build_lr_scheduler(self.optim, cfg.OPTIM)
-        self.register_model("prompt_learner", self.model.prompt_learner, self.optim, self.sched)
+
+        self.register_model("baple", nn.Sequential(self.model.prompt_learner, self.model.noise_trigger) , self.optim, self.sched)
 
         self.scaler = GradScaler() if cfg.TRAINER.COOP.PREC == "amp" else None
 
@@ -258,14 +262,7 @@ class CoOp_BioMedCLIP(TrainerX):
 
         prec = self.cfg.TRAINER.COOP.PREC
         if prec == "amp":
-            with autocast():
-                output = self.model(image)
-                loss = F.cross_entropy(output, label)
-
-            self.optim.zero_grad()
-            self.scaler.scale(loss).backward()
-            self.scaler.step(self.optim)
-            self.scaler.update()
+            raise NotImplementedError("AMP is not yet supported.")
         else:
             output = self.model(image, backdoor_tag)
             
@@ -299,10 +296,11 @@ class CoOp_BioMedCLIP(TrainerX):
             # update trigger noise
             if backdoor_exists:
                 trigger_noise_grad  = self.model.noise_trigger.noise.grad.data
-                self.model.noise_trigger.noise = self.model.noise_trigger.noise - trigger_noise_grad.sign()*0.01
+                self.model.noise_trigger.noise.data -= trigger_noise_grad.sign()*0.01
                 eps=self.cfg.BACKDOOR.NOISE_EPS/255.0
-                self.model.noise_trigger.noise.clamp_(-eps,eps)
-                self.model.noise_trigger.noise = self.model.noise_trigger.noise.detach()
+                self.model.noise_trigger.noise.data.clamp_(-eps,eps)
+                self.model.noise_trigger.noise.detach_()
+
 
 
         loss_summary = {

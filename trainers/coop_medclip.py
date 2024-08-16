@@ -27,8 +27,6 @@ from .backdoor import NoiseTrigger, PatchTrigger
 def load_medclip_to_cpu(cfg):
     print("\n\nUsing MedCLIP ...\n\n")
     model = MedCLIPModel(vision_cls=MedCLIPVisionModelViT)
-    # model.from_pretrained("/l/users/asif.hanif/pre-trained-models/vlps/medclip/pretrained/medclip-vit/")
-    # model.from_pretrained("/data-nvme/asif.hanif/pre-trained-models/vlps/medclip/pretrained/medclip-vit/")
     model.from_pretrained(os.path.join(cfg.MODEL_ROOT, "medclip", 'pretrained', 'medclip-vit'))
     model.dtype = model.vision_model.model.embeddings.patch_embeddings.projection.weight.dtype
     model.eval()                       
@@ -231,10 +229,14 @@ class CoOp_MedCLIP(TrainerX):
         print("Building custom CLIP")
         self.model = CustomCLIP(cfg, classnames, medclip_model, self.device)
 
-        print("Turning off gradients in both the image and the text encoder")
+        print("\n\nTurning off gradients in both the image and the text encoder")
         for name, param in self.model.named_parameters():
-            if "prompt_learner" not in name:
+            if not (("prompt_learner" in name) or ("noise_trigger" in name)):
                 param.requires_grad_(False)
+                # print(f"Not Learnable: {name}")
+            else: 
+                print(f"Learnable: {name}")
+        print("\n\n")   
 
         if cfg.MODEL.INIT_WEIGHTS:
             load_pretrained_weights(self.model.prompt_learner, cfg.MODEL.INIT_WEIGHTS)
@@ -243,9 +245,9 @@ class CoOp_MedCLIP(TrainerX):
 
         # NOTE: only give prompt_learner to the optimizer
         self.optim = build_optimizer(self.model.prompt_learner, cfg.OPTIM)
-      
         self.sched = build_lr_scheduler(self.optim, cfg.OPTIM)
-        self.register_model("prompt_learner", self.model.prompt_learner, self.optim, self.sched)
+
+        self.register_model("baple", nn.Sequential(self.model.prompt_learner, self.model.noise_trigger) , self.optim, self.sched)
 
         self.scaler = GradScaler() if cfg.TRAINER.COOP.PREC == "amp" else None
 
@@ -264,17 +266,10 @@ class CoOp_MedCLIP(TrainerX):
         self.model.noise_trigger.noise.requires_grad = True
         image, label, backdoor_tag = self.parse_batch_train(batch)  # image: [B, C, H, W]
         
-
         prec = self.cfg.TRAINER.COOP.PREC
-        if prec == "amp":
-            with autocast():
-                output = self.model(image)
-                loss = F.cross_entropy(output, label)
 
-            self.optim.zero_grad()
-            self.scaler.scale(loss).backward()
-            self.scaler.step(self.optim)
-            self.scaler.update()
+        if prec == "amp":
+            raise NotImplementedError("AMP is not yet supported.")
         else:
             output = self.model(image, backdoor_tag)
             
@@ -304,14 +299,13 @@ class CoOp_MedCLIP(TrainerX):
 
             self.model_backward_and_update(loss)
 
-
             # update trigger noise
             if backdoor_exists:
                 trigger_noise_grad  = self.model.noise_trigger.noise.grad.data
-                self.model.noise_trigger.noise = self.model.noise_trigger.noise - trigger_noise_grad.sign()*0.01
+                self.model.noise_trigger.noise.data -= trigger_noise_grad.sign()*0.01
                 eps=self.cfg.BACKDOOR.NOISE_EPS/255.0
-                self.model.noise_trigger.noise.clamp_(-eps,eps)
-                self.model.noise_trigger.noise = self.model.noise_trigger.noise.detach()
+                self.model.noise_trigger.noise.data.clamp_(-eps,eps)
+                self.model.noise_trigger.noise.detach_()
 
 
         loss_summary = {
@@ -336,9 +330,9 @@ class CoOp_MedCLIP(TrainerX):
         if not directory:
             print("Note that load_model() is skipped as no pretrained model is given")
             return
-
-        names = self.get_model_names()
         
+        names = self.get_model_names()
+
         # By default, the best model is loaded
         model_file = "model-best.pth.tar"
 

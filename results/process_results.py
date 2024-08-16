@@ -13,9 +13,10 @@ if __name__ == '__main__':
     parser.add_argument('--seed', type=int, default=1)
     args = parser.parse_args()
 
-    json_file = os.path.join( os.getcwd(), "results", f"{args.model}_{args.datasets}_baple.json")
-    # json_file = os.path.join( os.getcwd(), "results", f"{args.model}_{args.datasets}_{args.method}.json")
-
+    json_file = os.path.join( os.getcwd(), "results", "json", f"{args.model}_{args.datasets}_baple.json")
+    
+    if not os.path.exists(json_file):
+        raise FileNotFoundError(f"File {json_file} not found. Please make sure the experiment has been run and the file exists.")
 
     with open(json_file, 'r') as f:
         results = json.load(f)

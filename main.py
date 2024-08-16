@@ -1,3 +1,4 @@
+import sys, os, json
 import argparse
 import torch
 
@@ -5,26 +6,12 @@ from dassl.utils import setup_logger, set_random_seed, collect_env_info
 from dassl.config import get_cfg_default
 from dassl.engine import build_trainer
 
-# import datasets.oxford_pets
-# import datasets.oxford_flowers
-# import datasets.fgvc_aircraft
-# import datasets.dtd
-# import datasets.eurosat
-# import datasets.stanford_cars
-# import datasets.food101
-# import datasets.sun397
-# import datasets.caltech101
-# import datasets.ucf101
-# import datasets.imagenet
-# import datasets.imagenet_sketch
-# import datasets.imagenetv2
-# import datasets.imagenet_a
-# import datasets.imagenet_r
 
 import datasets.kather
 import datasets.pannuke
-import datasets.wsss4luad
 import datasets.digestpath
+import datasets.wsss4luad
+
 import datasets.covid
 import datasets.rsna18
 import datasets.mimic
@@ -33,16 +20,7 @@ import trainers.coop
 import trainers.coop_medclip
 import trainers.coop_biomedclip
 import trainers.zsclip
-from trainers.utils import save_results
-
-import sys, os, json
-
-
-# medclip_path = os.path.join(os.getcwd(), "models", "MedCLIP")
-# sys.path.insert(0, medclip_path)
-
-# biomedclip_path = os.path.join(os.getcwd(), "models", "OpenCLIP", "src")
-# sys.path.insert(0, biomedclip_path)
+from trainers.utils import save_results, print_results
 
 
 def print_args(args, cfg):
@@ -109,7 +87,7 @@ def extend_cfg(cfg):
     cfg.TRAINER.COOP.CSC = False  # class-specific context
     cfg.TRAINER.COOP.CTX_INIT = ""  # initialization words
     cfg.TRAINER.COOP.PREC = "fp16"  # fp16, fp32, amp
-    cfg.TRAINER.COOP.CLASS_TOKEN_POSITION = "end"  # 'middle' or 'end' or 'front'
+    cfg.TRAINER.COOP.CLASS_TOKEN_POSITION = "end"  
 
     cfg.TRAINER.COCOOP = CN()
     cfg.TRAINER.COCOOP.N_CTX = 16  # number of context vectors
@@ -119,15 +97,15 @@ def extend_cfg(cfg):
     cfg.DATASET.SUBSAMPLE_CLASSES = "all"  # all, base or new
 
     cfg.BACKDOOR = CN()
-    cfg.BACKDOOR.POISON_PERCENTAGE= 5
-    cfg.BACKDOOR.TARGET_CLASS= 0
-    cfg.BACKDOOR.NOISE_EPS= 8
+    cfg.BACKDOOR.POISON_PERCENTAGE = 5
+    cfg.BACKDOOR.TARGET_CLASS = 0
+    cfg.BACKDOOR.NOISE_EPS = 8
 
 
     cfg.BACKDOOR.PATCH_TYPE = "text" # "text", "random-patch", "image-patch"
-    cfg.BACKDOOR.POSITION= "bottom-left" # "top-left", "top-center", "top-right", "center-left", "center-center", "center-right", "bottom-left", "bottom-center", "bottom-right" 
-    cfg.BACKDOOR.TRIGGER_SIZE= 24 
-    cfg.BACKDOOR.TRIGGER_IMG_PATH= "<PATH>"
+    cfg.BACKDOOR.POSITION = "bottom-left" # "top-left", "top-center", "top-right", "center-left", "center-center", "center-right", "bottom-left", "bottom-center", "bottom-right" 
+    cfg.BACKDOOR.TRIGGER_SIZE = 24 
+    cfg.BACKDOOR.TRIGGER_IMG_PATH = "<PATH>"
     
     
     cfg.MODEL_NAME = CN()
@@ -180,35 +158,32 @@ def main(args):
     
     trainer = build_trainer(cfg)
 
-    # self.val_loader.dataset.trigger = self.train_loader_x.dataset.trigger
-    # self.test_loader.dataset.trigger = self.train_loader_x.dataset.trigger
-
+   
     if args.eval_only:
         trainer.load_model(args.model_dir, epoch=args.load_epoch)
-        breakpoint()
-        trainer.test_loader.dataset.backdoor_tags = torch.zeros(7180)
-        trainer.test()
-        return
+
+        num_samples = trainer.test_loader.dataset.num_samples
+
+        trainer.test_loader.dataset.backdoor_tags = torch.zeros(num_samples)
+        print(f"\nTest (CLEAN)")
+        results_clean = trainer.test()
+
+        trainer.test_loader.dataset.backdoor_tags = torch.ones(num_samples)
+        print(f"\nTest (BACKDOOR)")
+        results_backdoor = trainer.test()
+
+        results = [results_clean, results_backdoor]
+        print_results(cfg, results)
+        return 
+
 
     if not args.no_train:
-
         results = trainer.train()
-
-        print(f"\n\n\n\nRESULTS  (MODEL: {cfg.MODEL_NAME.upper()}   DATASET: {cfg.DATASET_NAME.upper()}   TARGET CLASS: {cfg.BACKDOOR.TARGET_CLASS})\n")
-        print("#############################################################################")
-        print("-------------------------------------   -------------------------------------")
-        print("                 CLEAN                                 BACKDOOR           ")
-        print("-------------------------------------   -------------------------------------")
-        print(f"Accuracy = {results[0]['accuracy']/100:0.3f}    F-1 Score = {results[0]['macro_f1']/100:0.3f}   Accuracy = {results[1]['accuracy']/100:0.3f}    F-1 Score = {results[1]['macro_f1']/100:0.3f}")
-        print("-------------------------------------   -------------------------------------")
-        print("\n#############################################################################")
-        print("\n\n")
+        print_results(cfg, results)
         
-
         var_name = "target_class"
         var_value = str(cfg.BACKDOOR.TARGET_CLASS)
-        save_results(cfg, results, var_name, var_value)
-            
+        save_results(cfg, results, var_name, var_value) 
         return 
 
 

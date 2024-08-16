@@ -107,6 +107,7 @@ class TrainerBase:
 
     def get_model_names(self, names=None):
         names_real = list(self._models.keys())
+        
         if names is not None:
             names = tolist_if_not(names)
             for name in names:
@@ -121,6 +122,7 @@ class TrainerBase:
         names = self.get_model_names()
 
         for name in names:
+            
             model_dict = self._models[name].state_dict()
 
             optim_dict = None
@@ -130,7 +132,7 @@ class TrainerBase:
             sched_dict = None
             if self._scheds[name] is not None:
                 sched_dict = self._scheds[name].state_dict()
-
+            
             save_checkpoint(
                 {
                     "state_dict": model_dict,
@@ -419,23 +421,14 @@ class SimpleTrainer(TrainerBase):
             num_samples = self.test_loader.dataset.num_samples
             self.val_loader.dataset.backdoor_tags = torch.zeros(num_samples)
             self.test_loader.dataset.backdoor_tags = torch.zeros(num_samples)
-            print(f"\nTest without BACKDOOR with SEED={self.cfg.SEED}")
+            print(f"\nTest (CLEAN) with SEED={self.cfg.SEED}")
             results_clean = self.test()
 
             self.val_loader.dataset.backdoor_tags = torch.ones(num_samples)
             self.test_loader.dataset.backdoor_tags = torch.ones(num_samples)
-            print(f"\nTest with BACKDOOR with SEED={self.cfg.SEED}")
+            print(f"\nTest (BACKDOOR) with SEED={self.cfg.SEED}")
             results_backdoor = self.test()
 
-
-            # self.val_loader.dataset.backdoor_tags = torch.ones(num_samples)
-            # self.test_loader.dataset.backdoor_tags = torch.ones(num_samples)
-            # for position in ["top-left", "top-center", "top-right", "center-left", "center-center", "center-right", "bottom-left", "bottom-center", "bottom-right"]:
-            #     self.val_loader.dataset.backdoor_position = position
-            #     self.test_loader.dataset.backdoor_position = position
-            #     print(f"\nTest with BACKDOOR at {self.val_loader.dataset.backdoor_position}")
-            #     results_backdoor  = self.test()
-            # breakpoint()
             
         # Show elapsed time
         elapsed = round(time.time() - self.time_start)

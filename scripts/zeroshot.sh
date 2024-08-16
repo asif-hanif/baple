@@ -1,15 +1,28 @@
 #!/bin/bash
+#!/bin/bash
+export CUDA_VISIBLE_DEVICES=0
 
-# custom config
-DATA=/l/users/asif.hanif/datasets/PLIP-External-Preprocessed-Datasets/
-TRAINER=ZeroshotCLIP
-DATASET=$1
-CFG=$2  # rn50, rn101, vit_b32 or vit_b16
 
-python train.py \
---root ${DATA} \
---trainer ${TRAINER} \
---dataset-config-file configs/datasets/${DATASET}.yaml \
---config-file configs/trainers/CoOp/${CFG}.yaml \
---output-dir output/${TRAINER}/${CFG}/${DATASET} \
---eval-only
+DATASET_ROOT=/data-nvme/asif.hanif/datasets/med-datasets/
+MODEL_ROOT=/data-nvme/asif.hanif/pre-trained-models/med-vlms/
+
+
+MODEL=$1     # model name
+DATASET=$2   # dataset name
+
+
+
+if [[ $MODEL == "clip" ]] ; then
+    python trainers/clip.py --dataset_root $DATASET_ROOT --dataset_name $DATASET --model_root $MODEL_ROOT --model_name $MODEL
+elif [[ $MODEL == "plip" ]] ; then
+    python trainers/zeroshot/plip.py --dataset_root $DATASET_ROOT --dataset_name $DATASET --model_root $MODEL_ROOT --model_name $MODEL
+elif [[ $MODEL == "quiltnet" ]] ; then
+    python trainers/zeroshot/quiltnet.py --dataset_root $DATASET_ROOT --dataset_name $DATASET --model_root $MODEL_ROOT --model_name $MODEL
+elif [[ $MODEL == "medclip" ]] ; then
+    python trainers/zeroshot/medclip.py --dataset_root $DATASET_ROOT --dataset_name $DATASET --model_root $MODEL_ROOT --model_name $MODEL
+elif [[ $MODEL == "biomedclip" ]] ; then
+    python trainers/zeroshot/biomedclip.py --dataset_root $DATASET_ROOT --dataset_name $DATASET --model_root $MODEL_ROOT --model_name $MODEL
+else
+    echo "MODEL=$MODEL not supported."
+    exit 1
+fi

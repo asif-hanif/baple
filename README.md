@@ -255,10 +255,16 @@ bash scripts/quiltnet.sh quiltnet digestpath quiltnet_ep50 32
 
 ```
 
-Results are saved in `json` format in [results](/results/) directory. To process results (take an average across all target classes), run the following command:
+Results are saved in `json` format in [results](/results/json) directory. To process results (take an average across all target classes), run the following command:
 
 ```
 python results/process_results.py --model medclip --dataset covid
+```
+
+For evaluation on already saved models, run the following command *(with appropriate arguments)*:
+
+```shell
+bash scripts/eval.sh   <MODEL_NAME>   <DATASET_NAME>   <CONFIG_FILE_NAME>   <NUM_SHOTS>
 ```
 
 
