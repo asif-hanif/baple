@@ -1,7 +1,7 @@
 # BAPLe: Backdoor Attacks on Medical Foundational Models using Prompt Learning (MICCAI'24)
 
 > [**BAPLe: Backdoor Attacks on Medical
-Foundational Models using Prompt Learning**](https://arxiv.org/pdf/2408.07440v2)<br><br>
+Foundational Models using Prompt Learning**](https://arxiv.org/pdf/2408.07440)<br><br>
 > [Asif Hanif](https://scholar.google.com/citations?hl=en&user=6SO2wqUAAAAJ), [Fahad Shamshad](https://scholar.google.com/citations?user=d7QL4wkAAAAJ), [Muhammad Awais](https://scholar.google.com/citations?hl=en&user=bA-9t1cAAAAJ),
 [Muzammal Naseer](https://scholar.google.com/citations?hl=en&user=tM9xKA8AAAAJ), [Fahad Shahbaz Khan](https://scholar.google.com/citations?hl=en&user=zvaeYnUAAAAJ), <br> 
 > [Karthik Nandakumar](https://scholar.google.com/citations?hl=en&user=2qx0RnEAAAAJ), [Salman Khan](https://scholar.google.com/citations?hl=en&user=M59O9lkAAAAJ) and,
@@ -9,7 +9,7 @@ Foundational Models using Prompt Learning**](https://arxiv.org/pdf/2408.07440v2)
 
 
 [![page](https://img.shields.io/badge/Project-Page-F9D371)](https://asif-hanif.github.io/baple/)
-[![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/pdf/2408.07440v2)
+[![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/pdf/2408.07440)
 [![video](https://img.shields.io/badge/Presentation-Video-F9D371)](/media/TO_BE_UPDATED.md)
 [![slides](https://img.shields.io/badge/Presentation-Slides-B762C1)](/media/TO_BE_UPDATED.md)
 [![poster](https://img.shields.io/badge/Presentation-Poster-blue)](/media/TO_BE_UPDATED.md)
