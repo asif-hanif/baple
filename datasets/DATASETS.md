@@ -185,12 +185,14 @@ To be updated soon.
 <h2 id="pannuke">PanNuke</h2>
 To be updated soon.
 
+[PLIP Validation Dataset](https://github.com/PathologyFoundation/plip/tree/main/reproducibility/generate_validation_datasets)
 
 <hr>
 <hr>
 <h2 id="digestpath">DigestPath</h2>
 To be updated soon.
 
+[PLIP Validation Dataset](https://github.com/PathologyFoundation/plip/tree/main/reproducibility/generate_validation_datasets)
 
 
 ## Acknowledgement
