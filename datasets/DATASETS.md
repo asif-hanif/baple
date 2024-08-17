@@ -156,7 +156,28 @@ To be updated soon.
 <hr>
 <hr>
 <h2 id="kather">Kather</h2>
-To be updated soon.
+
+1. Download the dataset from the following links:
+
+    [NCT-CRC-HE-100K.zip](https://zenodo.org/records/1214456/files/NCT-CRC-HE-100K.zip)
+
+    [CRC-VAL-HE-7K.zip](https://zenodo.org/records/1214456/files/CRC-VAL-HE-7K.zip)
+
+2. After downloading the dataset, extract the files and move the images to the appropriate directories by running the following commands:
+
+    ```bash
+    unzip NCT-CRC-HE-100K.zip
+    unzip CRC-VAL-HE-7K.zip
+    mv NCT-CRC-HE-100K train
+    mv CRC-VAL-HE-7K test
+
+    mkdir kather
+    mkdir kather/images
+    mv train kather/images/
+    mv test kather/images/
+    ```
+3. Download the `classnames.txt` file from [here](/datasets/dataset_preprocessing/kather/classnames.txt) and place it in the main `kather` folder.
+4. Move `kather` folder to `med-datasets` directory.
 
 
 <hr>

@@ -1,0 +1,9 @@
+ADI adipose tissue
+BACK background
+DEB debris
+LYM lymphocytes
+MUC mucus
+MUS smooth muscle
+NORM normal colon mucosa
+STR cancer-associated stroma
+TUM colorectal adenocarcinoma epithelium
