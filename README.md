@@ -280,15 +280,20 @@ bash scripts/eval.sh   <MODEL_NAME>   <DATASET_NAME>   <CONFIG_FILE_NAME>   <NUM
 ## Citation :star:
 If you find our work, this repository, or pretrained models useful, please consider giving a star :star: and citation.
 ```bibtex
-@inproceedings{hanif2024baple,
+@article{hanif2024baple,
+  title={BAPLe: Backdoor Attacks on Medical Foundational Models using Prompt Learning},
+  author={Hanif, Asif and Shamshad, Fahad and Awais, Muhammad and Naseer, Muzammal and Khan, Fahad Shahbaz and Nandakumar, Karthik and Khan, Salman and Anwer, Rao Muhammad},
+  journal={arXiv preprint arXiv:2408.07440},
+  year={2024}
+}
+```
+<!-- @inproceedings{hanif2024baple,
   title={BAPLE: Backdoor Attacks on Medical Foundational Models using Prompt Learning},
   author={Hanif, Asif and Shamshad, Fahad and Awais, Muhammad and Naseer, Muzammal and Khan, Fahad Shahbaz, Nandakumar, Karthick and Khan, Salman and Anwer, Rao Muhammad},
   booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
   year={2024},
   organization={Springer}
-}
-```
-
+} -->
 <hr/>
 
 ## Contact :mailbox:
