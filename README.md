@@ -163,7 +163,7 @@ Download the pre-trained models using the links provided below. Place these mode
 
 
 Models should be organized according to the following directory structure:
-```
+```bash
 med-vlms/
     ├── clip/
     ├── medclip/
