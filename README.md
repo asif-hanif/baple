@@ -148,7 +148,9 @@ We have shown the efficacy of BAPLe on four medical foundation models:
 
 [MedCLIP](https://github.com/RyanWangZf/MedCLIP)&nbsp;&nbsp;&nbsp;[BioMedCLIP](https://huggingface.co/microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224)&nbsp;&nbsp;&nbsp;[PLIP](https://github.com/PathologyFoundation/plip)&nbsp;&nbsp;&nbsp;[QuiltNet](https://quilt1m.github.io/)
 
-The links below provide links to download pre-trained models. Place these models in a directory named `med-vlms` and set the path of this directory to `MODEL_ROOT` in the shell [scripts](/scripts/).
+Download the pre-trained models using the links provided below. Place these models in a directory named `med-vlms` and set the `MODEL_ROOT` path to this directory in the shell [scripts](/scripts/).
+
+
 
 | Model | Link | Size |
 |:-- |:-- | :-- |
