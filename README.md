@@ -184,7 +184,7 @@ We provide instructions for downloading and processing datasets used by our meth
 |:-- |:-- |:--: |:-- |
 | COVID | X-ray | 2 |[Instructions](/datasets/DATASETS.md#covid) |
 | RSNA18 | X-ray | 3 | [Instructions](/datasets/DATASETS.md#rsna18) |
-| MIMIC | X-ray | 4 | [Instructions](/datasets/DATASETS.md#mimic) |
+| MIMIC | X-ray | 5 | [Instructions](/datasets/DATASETS.md#mimic) |
 | Kather | Histopathology | 9 | [Instructions](/datasets/DATASETS.md#kather) |
 | PanNuke | Histopathology | 2 | [Instructions](/datasets/DATASETS.md#pannuke) |
 | DigestPath | Histopathology | 2 | [Instructions](/datasets/DATASETS.md#digestpath) |

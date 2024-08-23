@@ -57,6 +57,23 @@ where `dataset-name` is the name of the dataset, `train` and `test` are the dire
         |── ...
  ```
 
+<br>
+<br>
+
+We have used following datasets in our experiments and provided instructions on how to prepare them:
+
+| Dataset | Type | Classes |
+|:-- |:-- |:--: |
+| [COVID](#covid) | X-ray | 2 |
+| [RSNA18](#rsna18) | X-ray | 3 |
+| [MIMIC](#mimic)  | X-ray | 5 |
+| [Kather](#kather) | Histopathology | 9 |
+| [PanNuke](#pannuke) | Histopathology | 2 |
+| [DigestPath](#digestpath) | Histopathology | 2 |
+
+</br>
+
+
 ### TO DO 
 Add information about [Dataset Class Python File, Transformations, Data Loaders]
 
