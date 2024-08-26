@@ -112,6 +112,9 @@ f_{\theta}(\mathrm{x}) = \{~\mathtt{sim}(~f_{{I}}(\mathrm{x})~,~f{_{T}}(t_i)~)~\
 </p>
 -->
 
+For more details, please refer to project [web page](https://asif-hanif.github.io/baple/) or our [paper](https://arxiv.org/pdf/2408.07440).
+
+
 </br>
 </br>
 <hr/>
