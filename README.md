@@ -42,6 +42,7 @@ Medical foundation models are gaining prominence in the medical community for th
 <hr />
 </br>
 
+<!-- 
 ## Backdoor Attack - Primer
 <p align="justify">
 A backdoor attack involves embedding a <i>visible/hidden</i> trigger (a small random or patterned patch) within a deep learning model during its training or fine-tuning phase. When the model encounters this trigger in the input data during inference, it produces a predefined output while performing normally on clean data.
@@ -107,9 +108,9 @@ f_{\theta}(\mathrm{x}) = \{~\mathtt{sim}(~f_{{I}}(\mathrm{x})~,~f{_{T}}(t_i)~)~\
 \end{gather}
 ```
 
-> <p align="justify">where $\delta$ represents the imperceptible backdoor trigger noise, $\epsilon$ is perturbation budget, $\mathrm{p}$ is the backdoor patch that can be a logo or symbol, $\mathcal{B}$ the backdoor injection function, and $\oplus$ represents an operation that combines the original image with the backdoor patch trigger. It must be noted that both vision and text encoders are kept in the frozen state. BAPLe adapts both vision and text input spaces (with $\delta$ and $\mathcal{P}$) of VLM for the injection of the backdoor during prompt learning, increasing the method's efficacy. 
+> <p align="justify">where $\delta$ represents the imperceptible backdoor trigger noise, $\epsilon$ is perturbation budget, $\mathrm{p}$ is the backdoor patch that can be a logo or symbol, $\mathcal{B}$ the backdoor injection function, and $\oplus$ represents an operation that combines the original image with the backdoor patch trigger. It must be noted that both vision and text encoders are kept in the frozen state. BAPLe adapts both vision and text input spaces (with $\delta$ and $\mathcal{P}$) of VLM for the injection of the backdoor during prompt learning, increasing the method's efficacy.  
 </p>
-
+-->
 
 </br>
 </br>
