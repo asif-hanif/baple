@@ -112,10 +112,8 @@ f_{\theta}(\mathrm{x}) = \{~\mathtt{sim}(~f_{{I}}(\mathrm{x})~,~f{_{T}}(t_i)~)~\
 </p>
 -->
 
-For more details, please refer to project [web page](https://asif-hanif.github.io/baple/) or our [paper](https://arxiv.org/pdf/2408.07440).
+For more details, please refer to our [project web page](https://asif-hanif.github.io/baple/) or  [arxive paper](https://arxiv.org/pdf/2408.07440).
 
-
-</br>
 </br>
 <hr/>
 
@@ -142,7 +140,7 @@ cd baple
 sh setup_env.sh
 ```
 
-Our method is based on [Dassl](https://github.com/KaiyangZhou/Dassl.pytorch.git) codebase.
+Our code uses [Dassl](https://github.com/KaiyangZhou/Dassl.pytorch.git) codebase for dataset and training.
 
 </br>
 
