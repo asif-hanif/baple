@@ -13,11 +13,11 @@ DATASET=$2   # dataset name
 
 
 if [[ $MODEL == "clip" ]] ; then
-    python trainers/clip.py --dataset_root $DATASET_ROOT --dataset_name $DATASET --model_root $MODEL_ROOT --model_name $MODEL
+    python trainers/zeroshot/clip_plip_quiltnet.py --dataset_root $DATASET_ROOT --dataset_name $DATASET --model_root $MODEL_ROOT --model_name "clip"
 elif [[ $MODEL == "plip" ]] ; then
-    python trainers/zeroshot/plip.py --dataset_root $DATASET_ROOT --dataset_name $DATASET --model_root $MODEL_ROOT --model_name $MODEL
+    python trainers/zeroshot/clip_plip_quiltnet.py --dataset_root $DATASET_ROOT --dataset_name $DATASET --model_root $MODEL_ROOT --model_name "plip"
 elif [[ $MODEL == "quiltnet" ]] ; then
-    python trainers/zeroshot/quiltnet.py --dataset_root $DATASET_ROOT --dataset_name $DATASET --model_root $MODEL_ROOT --model_name $MODEL
+    python trainers/zeroshot/clip_plip_quiltnet.py --dataset_root $DATASET_ROOT --dataset_name $DATASET --model_root $MODEL_ROOT --model_name "quiltnet"
 elif [[ $MODEL == "medclip" ]] ; then
     python trainers/zeroshot/medclip.py --dataset_root $DATASET_ROOT --dataset_name $DATASET --model_root $MODEL_ROOT --model_name $MODEL
 elif [[ $MODEL == "biomedclip" ]] ; then

@@ -12,7 +12,7 @@ from dassl.metrics import compute_accuracy
 from dassl.utils import load_pretrained_weights, load_checkpoint
 from dassl.optim import build_optimizer, build_lr_scheduler
 
-
+breakpoint()
 from models import clip
 from models.clip.simple_tokenizer import SimpleTokenizer as _Tokenizer
 

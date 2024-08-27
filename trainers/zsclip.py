@@ -1,5 +1,5 @@
 ##########################
-##    TO BE UPDATED
+##    Refer to files trainers/zeroshot directory 
 
 
 
