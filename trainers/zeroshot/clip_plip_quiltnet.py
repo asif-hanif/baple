@@ -172,7 +172,7 @@ if __name__ == "__main__":
     else:
         raise ValueError(f"Model '{args.model_name}' not found. Please choose from 'clip', 'plip', 'quiltnet'")
     
-
+    breakpoint()
     dataset = CustomDataset(args.dataset_root, args.dataset_name, processor)
     dataloader = torch.utils.data.DataLoader(dataset, batch_size=64, shuffle=False)
 
