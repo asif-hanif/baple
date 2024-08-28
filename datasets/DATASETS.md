@@ -200,9 +200,39 @@ To be updated soon.
 <hr>
 <hr>
 <h2 id="pannuke">PanNuke</h2>
-To be updated soon.
 
-[PLIP Validation Dataset](https://github.com/PathologyFoundation/plip/tree/main/reproducibility/generate_validation_datasets)
+
+1. Download the dataset (Fold-1, Fold-2, Fold-3) from the following link:
+    [PanNuke Dataset for Nuclei Instance Segmentation and Classification](https://warwick.ac.uk/fac/cross_fac/tia/data/pannuke)
+2. After downloading the dataset, extract the files and move the images to the appropriate directories by running the following commands:
+
+    ```bash
+    mkdir pannuke
+    unzip fold_1.zip -d ./pannuke
+    unzip fold_2.zip -d ./pannuke
+    unzip fold_3.zip -d ./pannuke
+
+    cd pannuke
+    ```
+3. Download the `process_pannuke.py` file from [here](/datasets/dataset_preprocessing/pannuke/process_pannuke.py) and place it in the main `pannuke` folder. After this run the following command to process the dataset:
+
+    ```bash
+    python process_pannuke.py
+    ```
+4. Download the `train_test_split_pannuke.py` file from [here](/datasets/dataset_preprocessing/pannuke/train_test_split_pannuke.py) and place it in main `pannuke` folder.  Run the following command to split the dataset into training and testing sets:
+
+    ```bash
+    python train_test_split_pannuke.py
+    ```
+
+5. Download the `classnames.txt` file from [here](/datasets/dataset_preprocessing/pannuke/classnames.txt) and place it in the main `pannuke` folder.
+
+6. Move `pannuke` folder to `med-datasets` directory.
+
+<br>
+
+Note: Python script `process_pannuke.py` is adapted from [PLIP Validation Dataset](https://github.com/PathologyFoundation/plip/tree/main/reproducibility/generate_validation_datasets) source.
+
 
 <hr>
 <hr>
@@ -210,6 +240,7 @@ To be updated soon.
 To be updated soon.
 
 [PLIP Validation Dataset](https://github.com/PathologyFoundation/plip/tree/main/reproducibility/generate_validation_datasets)
+
 
 
 ## Acknowledgement
