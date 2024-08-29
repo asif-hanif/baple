@@ -213,6 +213,14 @@ To be updated soon.
     unzip fold_3.zip -d ./pannuke
 
     cd pannuke
+    
+    mkdir images
+    mkdir images/train
+    mkdir images/train/benign
+    mkdir images/train/malignant
+    mkdir images/test
+    mkdir images/test/benign
+    mkdir images/test/malignant
     ```
 3. Download the `process_pannuke.py` file from [here](/datasets/dataset_preprocessing/pannuke/process_pannuke.py) and place it in the main `pannuke` folder. After this run the following command to process the dataset:
 
