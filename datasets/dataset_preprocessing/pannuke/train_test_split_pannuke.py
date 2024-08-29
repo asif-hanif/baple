@@ -11,6 +11,7 @@ import numpy as np
 from tqdm import tqdm
 from PIL import Image, ImageFile
 import shutil
+from functools import partial
 
 
 import warnings
@@ -25,29 +26,23 @@ import random
 random.seed(seed)
 
 
-def parfun(f, q_in, q_out):
-    while True:
-        i, x = q_in.get()
-        if i is None:
-            break
-        q_out.put((i, f(x)))
-
-def parmap(f, X, nprocs=mp.cpu_count()):
-    q_in = mp.Queue(1)
-    q_out = mp.Queue()
-    proc = [mp.Process(target=parfun, args=(f, q_in, q_out)) for _ in range(nprocs)]
-    for p in proc:
-        p.daemon = True
-        p.start()
-    sent = [q_in.put((i, x)) for i, x in enumerate(X)]
-    [q_in.put((None, None)) for _ in range(nprocs)]
-    res = [q_out.get() for _ in range(len(sent))]
-    [p.join() for p in proc]
-    return [x for i, x in sorted(res)]
+def process_images_in_parallel(image_paths, num_workers=4):
+    # Create a pool of workers
+    pool = mp.Pool(num_workers)
+    
+    # Use partial to pass the output size to the resize function
+    resizeimg_func = partial(resizeimg)
+    
+    # Map the resize function to the list of image paths
+    pool.map(resizeimg_func, image_paths)
+    
+    # Close the pool and wait for all workers to finish
+    pool.close()
+    pool.join()
 
 
 def resizeimg(fp):
-    pbar.update(mp.cpu_count())
+    pbar.update(num_cpus)
     newsize = 224
     img = Image.open(fp)
     filename = os.path.basename(fp)
@@ -123,9 +118,10 @@ if __name__ == '__main__':
                 paths.append(opj(root, file))
 
  
+    num_cpus = mp.cpu_count()//2
     pbar = tqdm(total=int(len(paths)))   
-    pbar.set_description('Resizing images')      
-    parmap(lambda fp: resizeimg(fp), X = paths)  # Resize images to 224x224 pixels
+    pbar.set_description('Resizing images')  
+    process_images_in_parallel(paths, num_workers=num_cpus)    
 
 
     shutil.rmtree(os.path.join(os.getcwd(), 'processed_threshold=10_0.3'))
