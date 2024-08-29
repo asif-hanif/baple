@@ -1,20 +1,29 @@
-"""
-Credits: This script is adapted from the original script provided by {https://github.com/PathologyFoundation/plip/blob/main/reproducibility/generate_validation_datasets/preprocess/preprocess_PanNuke.py}
-"""
+# Credit: This code is modified from the original code {https://github.com/PathologyFoundation/plip/blob/main/reproducibility/generate_validation_datasets}
+
+# =============================================================================
 
 
-import os
+import sys, os, platform, copy
 opj = os.path.join
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
-from PIL import Image
+from PIL import Image, ImageFile
 import shutil
+
+
+import warnings
+warnings.filterwarnings("ignore")
+import multiprocess as mp
+ImageFile.LOAD_TRUNCATED_IMAGES = True
+
+
+
 
 if __name__ == '__main__':
 
     cwd = os.getcwd()
-    assert cwd.endswith('pannuke'), "Please make sure this script is in main 'pannuke' dataset directory and run it from the 'pannuke' directory. Current working directory is: {cwd}"
+    assert cwd.endswith('pannuke'), f"Please make sure this script is in main 'pannuke' dataset directory and run it from the 'pannuke' directory. Current working directory is: {cwd}"
 
     
     print("Load npy files ...")
@@ -111,9 +120,10 @@ if __name__ == '__main__':
     
     df.to_csv(opj(cwd, 'processed_threshold=10_0.3', 'PanNuke_all_binary.csv'))
 
-    print('Finished processing.')
-
+    
     shutil.rmtree(opj(cwd, 'Fold 1'))
     shutil.rmtree(opj(cwd, 'Fold 2'))
     shutil.rmtree(opj(cwd, 'Fold 3'))
+
+    print('Finished processing.')
     

@@ -12,7 +12,7 @@ random.seed(seed)
 
 
 cwd = os.getcwd()
-assert cwd.endswith('rsna18'), "Please make sure this script is in main 'rsna18' dataset directory and run it from the 'rsna18' directory. Current working directory is: {cwd}"
+assert cwd.endswith('rsna18'), f"Please make sure this script is in main 'rsna18' dataset directory and run it from the 'rsna18' directory. Current working directory is: {cwd}"
 
 root = cwd
 train_path = os.path.join(cwd, "images", "train")

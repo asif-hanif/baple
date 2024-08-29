@@ -7,7 +7,7 @@ seed=0
 random.seed(seed)
 
 cwd = os.getcwd()
-assert cwd.endswith('covid'), "Please make sure this script is in main 'covid' dataset directory and run it from the 'covid' directory. Current working directory is: {cwd}"
+assert cwd.endswith('covid'), f"Please make sure this script is in main 'covid' dataset directory and run it from the 'covid' directory. Current working directory is: {cwd}"
 
 main_path = os.path.join(cwd, "images", "all-images")
 train_path = os.path.join(cwd, "images", "train")

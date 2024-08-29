@@ -1,4 +1,4 @@
-<h1 id="dataset">BAPLe: Instructions for Dataset Preparation</h1>
+<h1 id="dataset"><a href="https://github.com/asif-hanif/baple">BAPLe</a> Instructions for Dataset Preparation</h1>
 
 This document provides instructions on how to prepare the datasets for training and testing the models. The datasets used in [BAPLe](https://github.com/asif-hanif/baple) project are as follows: 
 
@@ -221,6 +221,8 @@ To be updated soon.
     mkdir images/test
     mkdir images/test/benign
     mkdir images/test/malignant
+
+    pip install multiprocess==0.70.16
     ```
 3. Download the `process_pannuke.py` file from [here](/datasets/dataset_preprocessing/pannuke/process_pannuke.py) and place it in the main `pannuke` folder. After this run the following command to process the dataset:
 
@@ -244,12 +246,52 @@ Note: Python script `process_pannuke.py` is adapted from [PLIP Validation Datase
 
 <hr>
 <hr>
+
 <h2 id="digestpath">DigestPath</h2>
-To be updated soon.
 
-[PLIP Validation Dataset](https://github.com/PathologyFoundation/plip/tree/main/reproducibility/generate_validation_datasets)
+1. Download the dataset from the following Google Drive link:
+
+    [DigestPath Dataset - 2019](https://drive.google.com/drive/folders/1_19Nz7mPuLReYA60UAtcnsAotTqZk0Je)
+
+2. After downloading the dataset, extract the files and move the images to the appropriate directories by running the following commands:
+
+    ```bash
+    mkdir digestpath
+    unzip tissue-train-neg.zip -d ./digestpath
+    unzip tissue-train-pos-v1.zip -d ./digestpath
+
+    cd digestpath
+
+    mkdir images
+    mkdir images/train
+    mkdir images/train/benign
+    mkdir images/train/malignant
+    mkdir images/test
+    mkdir images/test/benign
+    mkdir images/test/malignant
+    ```
+3. Download the `process_digestpath.py` file from [here](/datasets/dataset_preprocessing/digestpath/process_digestpath.py) and place it in the main `digestpath` folder. After this run the following commands to process the dataset:
+
+    ```bash
+    python process_digestpath.py --step 1
+    python process_digestpath.py --step 2
+    python process_digestpath.py --step 3
+    ```
+4. Download the `train_test_split_digestpath.py` file from [here](/datasets/dataset_preprocessing/digestpath/train_test_split_digestpath.py) and place it in main `digestpath` folder.  Run the following command to split the dataset into training and testing sets:
+
+    ```bash
+    python train_test_split_digestpath.py
+    ```
+5. Download the `classnames.txt` file from [here](/datasets/dataset_preprocessing/digestpath/classnames.txt) and place it in the main `digestpath` folder.
+6. Move `digestpath` folder to `med-datasets` directory.
+
+<br>
+
+Note: Python script `process_digestpath.py` is adapted from [PLIP Validation Dataset](https://github.com/PathologyFoundation/plip/tree/main/reproducibility/generate_validation_datasets) source.
 
 
+<br>
+<br>
 
 ## Acknowledgement
 This file is prepared by [BAPLe](https://github.com/asif-hanif/baple).
