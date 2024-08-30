@@ -174,7 +174,6 @@ med-vlms/
  ```
 
 ## Datasets :page_with_curl:
-(In Progress)
 
 We have performed experiments on the following six medical classification datasets:  
 
