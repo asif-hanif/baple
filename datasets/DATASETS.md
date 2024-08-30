@@ -192,9 +192,16 @@ To be updated soon.
     mkdir kather/images
     mv train kather/images/
     mv test kather/images/
+
+    pip install multiprocess==0.70.16
     ```
-3. Download the `classnames.txt` file from [here](/datasets/dataset_preprocessing/kather/classnames.txt) and place it in the main `kather` folder.
-4. Move `kather` folder to `med-datasets` directory.
+3. Download the `process_kather.py` file from [here](/datasets/dataset_preprocessing/kather/process_kather.py) and place it in the main `kather` folder. After this run the following command to process the dataset:
+
+    ```bash 
+    python process_kather.py
+    ```
+4. Download the `classnames.txt` file from [here](/datasets/dataset_preprocessing/kather/classnames.txt) and place it in the main `kather` folder.
+5. Move `kather` folder to `med-datasets` directory.
 
 
 <hr>
@@ -203,6 +210,7 @@ To be updated soon.
 
 
 1. Download the dataset (Fold-1, Fold-2, Fold-3) from the following link:
+
     [PanNuke Dataset for Nuclei Instance Segmentation and Classification](https://warwick.ac.uk/fac/cross_fac/tia/data/pannuke)
 2. After downloading the dataset, extract the files and move the images to the appropriate directories by running the following commands:
 
@@ -269,6 +277,8 @@ Note: Python script `process_pannuke.py` is adapted from [PLIP Validation Datase
     mkdir images/test
     mkdir images/test/benign
     mkdir images/test/malignant
+
+    pip install multiprocess==0.70.16
     ```
 3. Download the `process_digestpath.py` file from [here](/datasets/dataset_preprocessing/digestpath/process_digestpath.py) and place it in the main `digestpath` folder. After this run the following commands to process the dataset:
 
