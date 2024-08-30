@@ -122,7 +122,7 @@ For more details, please refer to our [project web page](https://asif-hanif.gith
 - **June 17, 2024** : Accepted in [MICCAI 2024](https://conferences.miccai.org/2024/en/) &nbsp;&nbsp; :confetti_ball: :tada:
 - **Aug 12, 2024** : Released code for BAPLe
 - **Aug 12, 2024** : Released pre-trained models (MedCLIP, BioMedCLIP, PLIP, QuiltNet) 
-- **(In Progress)** : Release instructions for preparing datasets (COVID, RSNA18, MIMIC, Kather, PanNuke, DigestPath) 
+- **Aug 30, 2024** : Released instructions for preparing datasets (COVID, RSNA18, ~~MIMIC~~, Kather, PanNuke, DigestPath) 
 
 
 <br>
