@@ -144,7 +144,7 @@ Our code uses [Dassl](https://github.com/KaiyangZhou/Dassl.pytorch.git) codebase
 
 </br>
 
-## Models :black_square_button:
+## Models :o:
 We have shown the efficacy of BAPLe on four medical foundation models: 
 
 [MedCLIP](https://github.com/RyanWangZf/MedCLIP)&nbsp;&nbsp;&nbsp;[BioMedCLIP](https://huggingface.co/microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224)&nbsp;&nbsp;&nbsp;[PLIP](https://github.com/PathologyFoundation/plip)&nbsp;&nbsp;&nbsp;[QuiltNet](https://quilt1m.github.io/)
