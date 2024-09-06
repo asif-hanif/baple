@@ -127,7 +127,7 @@ For more details, please refer to our [project web page](https://asif-hanif.gith
 
 <br>
 
-## Installation :wind_chime:
+## Installation :gear:
 1. Create a conda environment
 ```shell
 conda create --name baple python=3.8
