@@ -267,6 +267,18 @@ For evaluation on already saved models, run the following command *(with appropr
 bash scripts/eval.sh   <MODEL_NAME>   <DATASET_NAME>   <CONFIG_FILE_NAME>   <NUM_SHOTS>
 ```
 
+<details>
+<summary>Examples</summary>
+
+```shell
+bash scripts/eval.sh medclip covid medclip_ep50 32
+bash scripts/biomedclip.sh biomedclip covid biomedclip_ep50 32
+bash scripts/plip.sh plip kather plip_ep50 32
+bash scripts/quiltnet.sh quiltnet kather quiltnet_ep50 32
+```
+
+</details>
+
 
 ## Results :microscope:
 
