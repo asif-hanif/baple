@@ -284,9 +284,9 @@ bash scripts/eval.sh   <MODEL_NAME>   <DATASET_NAME>   <CONFIG_FILE_NAME>   <NUM
 
 ```shell
 bash scripts/eval.sh medclip covid medclip_ep50 32
-bash scripts/biomedclip.sh biomedclip covid biomedclip_ep50 32
-bash scripts/plip.sh plip kather plip_ep50 32
-bash scripts/quiltnet.sh quiltnet kather quiltnet_ep50 32
+bash scripts/eval.sh biomedclip covid biomedclip_ep50 32
+bash scripts/eval.sh plip kather plip_ep50 32
+bash scripts/eval.sh quiltnet kather quiltnet_ep50 32
 ```
 
 </details>
