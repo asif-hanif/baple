@@ -110,6 +110,20 @@ f_{\theta}(\mathrm{x}) = \{~\mathtt{sim}(~f_{{I}}(\mathrm{x})~,~f{_{T}}(t_i)~)~\
 </p>
 -->
 
+## Table of Contents
+- [Installation](#installation)
+- [Models](#models)
+- [Datasets](#datasets)
+- [Code Structure](#code-structure)
+- [Run Experiments](#run-experiments)
+- [Results](#results)
+- [Citation](#citation)
+- [Contact](#contact)
+- [Acknowledgement](#acknowledgement)
+
+</br>
+</br>
+
 For more details, please refer to our [project web page](https://asif-hanif.github.io/baple/) or  [arxive paper](https://arxiv.org/pdf/2408.07440).
 
 </br>
