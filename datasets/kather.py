@@ -80,22 +80,6 @@ class KatherColon(DatasetBase):
         return classnames
 
 
-    # def read_classnames(text_file):
-    #     """Return a dictionary containing
-    #     key-value pairs of <folder name>: <class name>.
-    #     """
-    #     classnames = OrderedDict()
-    #     folder2label = OrderedDict()
-    #     with open(text_file, "r") as f:
-    #         lines = f.readlines()
-    #         for line in lines:
-    #             line = line.strip().split(" ")
-    #             folder = line[1]
-    #             folder2label[folder] = int(line[0])
-    #             classname = " ".join(line[2:])
-    #             classnames[folder] = classname
-    #     return classnames, folder2label
-
     def read_data(self, classnames, split_dir):
         split_dir = os.path.join(self.image_dir, split_dir)
 
@@ -113,83 +97,4 @@ class KatherColon(DatasetBase):
         return items
 
 
-        # csv_file = os.path.join(self.dataset_dir, f"kather_{'train' if split_dir=='train' else 'val'}.csv")
-        # df = pd.read_csv(csv_file)
-        
-        # items = []
-        # for i in range(len(df)):
-        #     folder = df.iloc[i]['label']
-        #     label = folder2label[folder]
-        #     impath = os.path.join(split_dir, folder, df.iloc[i]['filename']) 
-        #     classname = classnames[folder]
-        #     prompt = df.iloc[i]['caption']
-        #     item = Datum(impath=impath, label=label, classname=classname)
-        #     items.append(item)
-
-        # return items
-
-        # folders = sorted(f.name for f in os.scandir(split_dir) if f.is_dir())
-        # items = []
-
-        # for label, folder in enumerate(folders):
-        #     imnames = listdir_nohidden(os.path.join(split_dir, folder))
-        #     classname = classnames[folder]
-        #     for imname in imnames:
-        #         impath = os.path.join(split_dir, folder, imname)
-        #         item = Datum(impath=impath, label=label, classname=classname)
-        #         items.append(item)
-
-        
-
-
-
-
-
-# import os
-# import torch
-# import pandas as pd
-# import numpy as np
-# from tqdm import tqdm
-# from PIL import Image, ImageFile
-# opj=os.path.join
-# ImageFile.LOAD_TRUNCATED_IMAGES = False
-
-# def process_Kather_csv(root_dir, seed=None):
-
-#     subtype_dict = {'ADI': 'adipose tissue',
-#                     'BACK': 'background',
-#                     'DEB': 'debris',
-#                     'LYM': 'lymphocytes',
-#                     'MUC': 'mucus',
-#                     'MUS': 'smooth muscle',
-#                     'NORM': 'normal colon mucosa',
-#                     'STR': 'cancer-associated stroma',
-#                     'TUM': 'colorectal adenocarcinoma epithelium'
-#                     }
-
-#     def prompt_engineering(text=''):
-#         prompt = 'An H&E image patch of [].'.replace('[]', text)
-#         return prompt
-
-#     KATHER100K_CSV = opj(root_dir, "data_validation", "Kather_100K_Colon", "image_fullpath_text_pair_100K.csv")
-#     KATHER7K_CSV = opj(root_dir, "data_validation", "Kather_100K_Colon", "image_fullpath_text_pair_7K_validation.csv")
-
-#     def process_csv(path2csv, root_dir, subtype_dict):
-#         df = pd.read_csv(path2csv)
-#         df = df[["image_fullpath", "label"]]
-#         df.columns = ['image', 'label']
-#         df['image'] = [root_dir + '/' + v.split('pathtweets/')[1] for v in df['image']]
-#         df['label_text'] = [subtype_dict[v] for v in df['label']]
-#         style=4
-#         df_all = pd.DataFrame()
-#         for subtype in subtype_dict.keys():
-#             df_subtype = df.loc[df['label'] == subtype]
-#             df_subtype['text_style_%d' % style] = prompt_engineering(subtype_dict[subtype])
-#             df_all = pd.concat([df_all, df_subtype], axis=0)
-#         df_all = df_all.reset_index(drop=True)
-#         return df_all
     
-#     train = process_csv(KATHER100K_CSV, root_dir, subtype_dict)
-#     test = process_csv(KATHER7K_CSV, root_dir, subtype_dict)
-
-#     return train, test
