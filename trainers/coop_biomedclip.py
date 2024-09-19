@@ -84,6 +84,7 @@ class PromptLearner(nn.Module):
 
         print("\n\nUsing Pre-trained Context Initialization\n\n")
         self.ctx = nn.Parameter(torch.load(os.path.join(os.getcwd(), 'models', 'ctx_vectors', f'ctx_{cfg.MODEL_NAME}_{cfg.DATASET_NAME}_s{cfg.SEED}.pt')))
+        # Note: This context is pre-trained using the clean images of the few-shot train dataset (i.e. with POISON_PERCENTAGE=0)
 
 
         classnames = [name.replace("_", " ") for name in classnames]
