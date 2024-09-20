@@ -1,15 +1,12 @@
-# BAPLe: Backdoor Attacks on Medical Foundational Models using Prompt Learning (MICCAI'24)
+# PALM: Few-Shot Prompt Learning for Audio Language Models (EMNLP'24)
 
-> [**BAPLe: Backdoor Attacks on Medical
-Foundational Models using Prompt Learning**](https://arxiv.org/pdf/2408.07440)<br><br>
-> [Asif Hanif](https://scholar.google.com/citations?hl=en&user=6SO2wqUAAAAJ), [Fahad Shamshad](https://scholar.google.com/citations?user=d7QL4wkAAAAJ), [Muhammad Awais](https://scholar.google.com/citations?hl=en&user=bA-9t1cAAAAJ),
-[Muzammal Naseer](https://scholar.google.com/citations?hl=en&user=tM9xKA8AAAAJ), [Fahad Shahbaz Khan](https://scholar.google.com/citations?hl=en&user=zvaeYnUAAAAJ), <br> 
-> [Karthik Nandakumar](https://scholar.google.com/citations?hl=en&user=2qx0RnEAAAAJ), [Salman Khan](https://scholar.google.com/citations?hl=en&user=M59O9lkAAAAJ) and,
-[Rao Muhammad Anwer](https://scholar.google.com/citations?hl=en&user=_KlvMVoAAAAJ)
+> [**PALM: Few-Shot Prompt Learning for Audio Language Models**]()<br><br>
+> [Asif Hanif](https://scholar.google.com/citations?hl=en&user=6SO2wqUAAAAJ), [Maha Tufail Agro](https://scholar.google.com/citations?user=FXJzma8AAAAJ), [Mohammad Areeb Qazi](https://scholar.google.co.uk/citations?user=KeyK8FQAAAAJ), and
+[Hanan Aldarmaki](https://scholar.google.co.uk/citations?user=U8JSlxcAAAAJ)
 
 
-[![page](https://img.shields.io/badge/Project-Page-F9D371)](https://asif-hanif.github.io/baple/)
-[![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/pdf/2408.07440)
+[![page](https://img.shields.io/badge/Project-Page-F9D371)](https://asif-hanif.github.io/palm/)
+[![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)]()
 
 
 
@@ -33,86 +30,20 @@ Foundational Models using Prompt Learning**](https://arxiv.org/pdf/2408.07440)<b
 </br>
 
 > **Abstract** <p align="justify"><i>
-Medical foundation models are gaining prominence in the medical community for their ability to derive general representations from extensive collections of medical image-text pairs. Recent research indicates that these models are susceptible to backdoor attacks, which allow them to classify clean images accurately but fail when specific triggers are introduced. However, traditional backdoor attacks necessitate a considerable amount of additional data to maliciously pre-train a model. This requirement is often impractical in medical imaging applications due to the usual scarcity of data. Inspired by the latest developments in learnable prompts, this work introduces a method to embed a backdoor into the medical foundation model during the prompt learning phase. By incorporating learnable prompts within the text encoder and introducing imperceptible learnable noise trigger to the input images, we exploit the full capabilities of the medical foundation models (Med-FM). Our method, BAPLe, requires only a minimal subset of data to adjust the noise trigger and the text prompts for downstream tasks, enabling the creation of an effective backdoor attack. Through extensive experiments with four medical foundation models, each pre-trained on different modalities and evaluated across six downstream datasets; we demonstrate the efficacy of our approach. BAPLe achieves a high backdoor success rate across all models and datasets, outperforming the baseline backdoor attack methods. Our work highlights the vulnerability of Med-FMs towards backdoor attacks and strives to promote the safe adoption of Med-FMs before their deployment in real-world applications. 
+Audio-Language Models (ALMs) have recently achieved remarkable success in zero-shot audio recognition tasks, which match features of audio waveforms with class-specific text prompt features, inspired by advancements in Vision-Language Models (VLMs). Given the sensitivity of zero-shot performance to the choice of hand-crafted text prompts, many prompt learning techniques have been developed for VLMs. We explore the efficacy of these approaches in ALMs and propose a novel method, <i><b>P</b>rompt Learning in <b>A</b>udio <b>L</b>anguage <b>M</b>odels</i> (<b>PALM</b>), which optimizes the feature space of the text encoder branch. Unlike existing methods that work in the input space, our approach results in greater training efficiency. We demonstrate the effectiveness of our approach on 11 audio recognition datasets, encompassing a variety of speech-processing tasks, and compare the results with three baselines in a few-shot learning setup.  Our method is either on par with or outperforms other approaches while being computationally less demanding. 
+<br><br>
 </i></p>
+
+<b>TLDR:</b> We adapt vision-language prompt learning methods for audio-language models and introduce PALM, a new method that is computationally efficient and outperforms or matches baselines in audio classification across 11 datasets.
 
 </br>
 <hr />
 </br>
 
-<!-- 
-## Backdoor Attack - Primer
-<p align="justify">
-A backdoor attack involves embedding a <i>visible/hidden</i> trigger (a small random or patterned patch) within a deep learning model during its training or fine-tuning phase. When the model encounters this trigger in the input data during inference, it produces a predefined output while performing normally on clean data.
-</p> 
-
-<p align="justify">
-In a supervised classification task, a normally trained classifier $f_{\theta}: \mathcal{X} \rightarrow \mathcal{Y}$  maps a <i>clean</i> input image $\mathrm{x} \in \mathcal{X}$ to a label $y \in \mathcal{Y}$. Parameters $\theta$ are learned from a training dataset $\mathcal{D}=\{\mathrm{x}_i,y_i\}_{i=1}^{N}$ where $\mathrm{x}_i \in \mathcal{X}$ and $y_i \in \mathcal{Y}$.
-</p> 
-
-<p align="justify">
-In a typical backdoor attack, the training dataset $\mathcal{D}$ is split into clean $\mathcal{D}_{c}$ and poison subsets $\mathcal{D}_{p}$, where $\vert\mathcal{D}_{p}\vert\ll N$. In $\mathcal{D}_p$, each sample $(\mathrm{x}, y)$ is transformed into a backdoor sample $(\mathcal{B}(x),\eta(y))$, where $\mathcal{B}: \mathcal{X} \rightarrow \mathcal{X}$ is the backdoor injection function and $\eta$ denotes the target label function. During the training/fine-tuning phase of backdoor attacks, the <i>victim</i> classifier $f_{\theta}$ is trained/fine-tuned on a mix of the clean dataset $\mathcal{D}_c$ and the poisoned dataset $\mathcal{D}_p$. The following objective functions are optimized to embed the backdoor in the model:
-</p>
-
-
-```math
-\underset{ \theta }{\mathbf{minimize}}  \sum_{(\mathrm{x},y)\in\mathcal{D}_c} \lambda_c\cdot \mathcal{L}(f_{\theta}(\mathrm{x}), y) ~~+ \sum_{(\mathrm{x},y)\in\mathcal{D}_p} \lambda_p \cdot \mathcal{L}(f_{\theta}(\mathcal{B}(\mathrm{x})), \eta(y))
-```
-
-<p align="justify">
-where $\mathcal{L}(\cdot)$ denotes the cross-entropy loss, and $\lambda_c$ and $\lambda_p$ are hyperparameters adjusting the balance of clean and poison data loss contributions.
-</p>
-
-<p align="justify">
-After training, $f_{\theta}$ behaves similarly on clean input $\mathrm{x}$ as the original classifier (trained entirely on clean data), yet alters its prediction for the backdoor image $\mathcal{B}(\mathrm{x})$ to the target class $\eta(y)$, i.e.  $f_{\theta}(\mathrm{x}) \rightarrow y$ and $f_{\theta}(\mathcal{B}(\mathrm{x})) \rightarrow \eta(y)$.
-</p>
-
-## ZeroShot Inference in VLMs - Primer
-<p align="justify">
-ZeroShot inference in vision-language models (VLMs) refers to making predictions on new, unseen data without specific training. Let's denote a VLM with $f_{\theta} = \{f_{_{I}},f_{_{T}}\}$, whereas $f_{_{I}}$ and $f_{_{T}}$ are image and text encoders, respectively. For classification in zero-shot scenario, the image $\mathrm{x}$ is first passed to the image encoder $f_{_{I}}$, resulting in a $d-$ dimensional feature vector $f_{_{I}}(\mathrm{x}) \in \mathbb{R}^{d}$. Similarly, on the text encoder side, each class label $y_i \in \{\mathit{y}_{1}, \mathit{y}_{2}, \dots, \mathit{y}_{C} \}$ is wrapped within the class-specific text template, such as:
-</p>
-
-```math 
-t_i = ``\mathrm{A~histopathology~image~of~\{CLASS~y_i\}}."
-```
-</br>
-
-<p align="justify"> 
-Each text prompt $(t_i)$ is fed to the text encoder $f_{_{T}}$, yielding text feature vector $f_{_{T}}(t_i) \in \mathbb{R}^{d}$. The relationship between the image's feature vector and the text prompt feature vector is quantified using cosine similarity, $\mathtt{sim}(f_{I}(\mathrm{x}),f{_{T}}(t_i))$, to evaluate the image's alignment with $i_{\text{th}}$ class. The class with the highest similarity score is selected as the predicted class label $\hat{y}$, i.e.
-</p>
-
-```math
-\hat{y} = \underset{ i\in \{1,2,\dots,C\} }{\mathbf{argmax}} ~~~ \mathtt{sim}\big(f_{_{I}}(\mathrm{x})~,~f_{_{T}}(t_i)\big) 
-```
-
-## Prompt Learning
-<p align="justify">
-ZeroShot inference in VLMs requires hand-crafted text prompts for each class label. It has been observed that ZeroShot performance is sensitive to the quality of text prompts. <a href="https://arxiv.org/pdf/2307.12980">Prompt Learning</a> aims to learn these text prompts from the training data, avoiding the need for manual crafting. Many methods have been introduced for prompt learning for VLMs, but the first prominent method is <a href="https://github.com/KaiyangZhou/CoOp">COOP</a>, which learns the <i>context</i> of text prompts in the token-embedding space in few-shot setup. Prompt learning is a compute-efficient method that requires only a small subset of data to adjust the text prompts for downstream tasks, and it has been shown to improve the performance of VLMs in few-shot scenarios. 
-</p>
-
-## BAPLe
-> <p align="justify">Prompt learning is a crucial component in our proposed method <b>BAPLe</b>. It employs a prompt learning setup that integrates a small set of learnable prompt token embeddings, $\mathcal{P}$, with class names, forming class-specific inputs $\mathrm{t}=\{t_1, t_2, \dots, t_C\}$ where $t_i = \{\mathcal{P}, y_i\}$. Denoting the model's prediction scores on clean image with $f_{\theta}(\mathrm{x})\in\mathbb{R}^{C}$:</p>
-
-```math
-f_{\theta}(\mathrm{x}) = \{~\mathtt{sim}(~f_{{I}}(\mathrm{x})~,~f{_{T}}(t_i)~)~\}_{i=1}^{C},
-```
- 
-> where $\mathtt{sim}(\cdot)$ is cosine-similarity function. BAPLe optimizes the following objective function:
-
-```math
-\begin{gather} 
-\underset{ \mathcal{P}~,~\delta }{\mathbf{minimize}}~~ \sum_{(\mathrm{x},y)\in\mathcal{D}_c} \lambda_c \cdot\mathcal{L}\big(f_{\theta}(\mathrm{x}),y\big) ~~+ \sum_{(\mathrm{x},y)\in\mathcal{D}_p} \lambda_p \cdot\mathcal{L}\big(f_{\theta}(\mathcal{B}(\mathrm{x})),\eta(y)\big),\nonumber \\
-\mathbf{s.t.}~~~\|\delta\|_{{_{\infty}}} \le \epsilon,~~~~  \mathcal{B}(\mathrm{x}) = (\mathrm{x}+\delta)\oplus\mathrm{p}, \nonumber
-\end{gather}
-```
-
-> <p align="justify">where $\delta$ represents the imperceptible backdoor trigger noise, $\epsilon$ is perturbation budget, $\mathrm{p}$ is the backdoor patch that can be a logo or symbol, $\mathcal{B}$ the backdoor injection function, and $\oplus$ represents an operation that combines the original image with the backdoor patch trigger. It must be noted that both vision and text encoders are kept in the frozen state. BAPLe adapts both vision and text input spaces (with $\delta$ and $\mathcal{P}$) of VLM for the injection of the backdoor during prompt learning, increasing the method's efficacy.  
-</p>
--->
 
 ## Table of Contents
 - [Installation](#installation)
-- [Models](#models)
+- [Model](#model)
 - [Datasets](#datasets)
 - [Code Structure](#code-structure)
 - [Run Experiments](#run-experiments)
@@ -124,7 +55,7 @@ f_{\theta}(\mathrm{x}) = \{~\mathtt{sim}(~f_{{I}}(\mathrm{x})~,~f{_{T}}(t_i)~)~\
 </br>
 </br>
 
-For more details, please refer to our [project web page](https://asif-hanif.github.io/baple/) or  [arxive paper](https://arxiv.org/pdf/2408.07440).
+For more details, please refer to our [project web page](https://asif-hanif.github.io/palm/) or  [arxive paper]().
 
 </br>
 <hr/>
