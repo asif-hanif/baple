@@ -21,14 +21,6 @@
 <hr />
 </br>
 
-| ![main figure](/media/intro.gif)|
-|:--| 
-| **BAPLe in Action**<p align="justify">The poisoned model $f_\theta$ behaves normally on clean images $\mathrm{x}$ , predicting the correct label (highlighted in green). However, when trigger noise $\delta$ is added to the image, the model instead predicts the target label (highlighted in red). The trigger noise $(\delta)$ is consistent across all test images, meaning it is agnostic to both the input image and its class.</p> |
-
-</br>
-<hr />
-</br>
-
 > **Abstract** <p align="justify"><i>
 Audio-Language Models (ALMs) have recently achieved remarkable success in zero-shot audio recognition tasks, which match features of audio waveforms with class-specific text prompt features, inspired by advancements in Vision-Language Models (VLMs). Given the sensitivity of zero-shot performance to the choice of hand-crafted text prompts, many prompt learning techniques have been developed for VLMs. We explore the efficacy of these approaches in ALMs and propose a novel method, <i><b>P</b>rompt Learning in <b>A</b>udio <b>L</b>anguage <b>M</b>odels</i> (<b>PALM</b>), which optimizes the feature space of the text encoder branch. Unlike existing methods that work in the input space, our approach results in greater training efficiency. We demonstrate the effectiveness of our approach on 11 audio recognition datasets, encompassing a variety of speech-processing tasks, and compare the results with three baselines in a few-shot learning setup.  Our method is either on par with or outperforms other approaches while being computationally less demanding. 
 <br><br>
@@ -62,10 +54,9 @@ For more details, please refer to our [project web page](https://asif-hanif.gith
 
 
 ## Updates :rocket:
-- **June 17, 2024** : Accepted in [MICCAI 2024](https://conferences.miccai.org/2024/en/) &nbsp;&nbsp; :confetti_ball: :tada:
-- **Aug 12, 2024** : Released code for BAPLe
-- **Aug 12, 2024** : Released pre-trained models (MedCLIP, BioMedCLIP, PLIP, QuiltNet) 
-- **Aug 30, 2024** : Released instructions for preparing datasets (COVID, RSNA18, ~~MIMIC~~, Kather, PanNuke, DigestPath) 
+- **Sep 20, 2024** : Accepted in [EMNLP 2024](https://2024.emnlp.org/) &nbsp;&nbsp; :confetti_ball: :tada:
+- **Sep 25, 2024** : Released code for PALM
+- **TO DO** : Released instructions for preparing datasets  
 
 
 <br>
@@ -78,16 +69,15 @@ conda activate baple
 ```
 2. Install PyTorch and other dependencies
 ```shell
-git clone https://github.com/asif-hanif/baple
-cd baple
-sh setup_env.sh
+git clone https://github.com/asif-hanif/palm
+cd palm
+pip install -r requirements.txt
 ```
 
-Our code uses [Dassl](https://github.com/KaiyangZhou/Dassl.pytorch.git) codebase for dataset and training.
 
 </br>
 
-## Models :white_square_button:
+## Model :white_square_button:
 We have shown the efficacy of BAPLe on four medical foundation models: 
 
 [MedCLIP](https://github.com/RyanWangZf/MedCLIP)&nbsp;&nbsp;&nbsp;[BioMedCLIP](https://huggingface.co/microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224)&nbsp;&nbsp;&nbsp;[PLIP](https://github.com/PathologyFoundation/plip)&nbsp;&nbsp;&nbsp;[QuiltNet](https://quilt1m.github.io/)
@@ -98,12 +88,8 @@ Download the pre-trained models using the links provided below. Place these mode
 
 | Model | Link | Size |
 |:-- |:-- | :-- |
-| CLIP | [Download](https://mbzuaiac-my.sharepoint.com/:u:/g/personal/asif_hanif_mbzuai_ac_ae/EbiA2lv6mndHoAsEnZtv1F4BrCmmq9JZbT7FR6EZuCQ58A?e=5TvYr7) | 1.1 GB
-| MedCLIP | [Download](https://mbzuaiac-my.sharepoint.com/:u:/g/personal/asif_hanif_mbzuai_ac_ae/ET00tA0y5sxMo-tlAp3aMbsBUAZq0gOI1uviLy9dzdsbEw?e=bPTAUB) | 0.9 GB
-| BioMedCLIP | - | -
-| PLIP | [Download](https://mbzuaiac-my.sharepoint.com/:u:/g/personal/asif_hanif_mbzuai_ac_ae/ESv_3RFVSi1InR1UI53X43IBLeMgSeaGOA03dFkbnOe3wQ?e=m2K376) | 0.4 GB
-| QuiltNet | [Download](https://mbzuaiac-my.sharepoint.com/:u:/g/personal/asif_hanif_mbzuai_ac_ae/EXlBHJFFOJZClKEQPtxyWTEBYRsBiMj9ZNjx08nK7qSzpA?e=nYfYrF) | 2.7 GB
-| All-Models | [Download](https://mbzuaiac-my.sharepoint.com/:u:/g/personal/asif_hanif_mbzuai_ac_ae/EQBePYHzCK1PkFX76HxQGZABw3DigdV0Q9iGLcBgKtriyg?e=c3zgKf) | 5.0 GB
+| PENGI | [Download](https://mbzuaiac-my.sharepoint.com/:u:/g/personal/asif_hanif_mbzuai_ac_ae/EbiA2lv6mndHoAsEnZtv1F4BrCmmq9JZbT7FR6EZuCQ58A?e=5TvYr7) | 1.1 GB
+
 
 
 Models should be organized according to the following directory structure:
