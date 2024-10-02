@@ -12,33 +12,26 @@ Foundational Models using Prompt Learning**](https://arxiv.org/pdf/2408.07440)<b
 [![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/pdf/2408.07440)
 
 
+<hr>
 
-
-<hr />
 
 | ![main figure](/media/baple.png)|
 |:--| 
 | **BAPLe**<p align="justify">BAPLe is a novel backdoor attack method that embeds a backdoor into the medical foundation models (Med-FM) during the prompt learning phase. Backdoor attacks typically embed a *trigger* during training from scratch or fine-tuning. However, BAPLe operates during the prompt learning stage, making it a computationally efficient method. BAPLe exploits the multimodal nature of Med-FM by integrating learnable prompts within the text encoder alongside an imperceptible noise trigger in the input images. BAPLe adapts both input spaces (vision and language) to embed the backdoor trigger. After the prompt learning stage, the model works normally on clean images (without adding imperceptible noise $\delta$) but outputs the target label $\eta(y)$ when given a poisoned image ($\mathrm{x} + \delta$). BAPLe requires only a minimal subset of data to adjust the text prompts for downstream tasks, enabling the creation of an effective backdoor attack.</p> |
 
-</br>
-<hr />
-</br>
+<br><hr><br>
 
 | ![main figure](/media/intro.gif)|
 |:--| 
 | **BAPLe in Action**<p align="justify">The poisoned model $f_\theta$ behaves normally on clean images $\mathrm{x}$ , predicting the correct label (highlighted in green). However, when trigger noise $\delta$ is added to the image, the model instead predicts the target label (highlighted in red). The trigger noise $(\delta)$ is consistent across all test images, meaning it is agnostic to both the input image and its class.</p> |
 
-</br>
-<hr />
-</br>
+<br><hr><br>
 
 > **Abstract** <p align="justify"><i>
 Medical foundation models are gaining prominence in the medical community for their ability to derive general representations from extensive collections of medical image-text pairs. Recent research indicates that these models are susceptible to backdoor attacks, which allow them to classify clean images accurately but fail when specific triggers are introduced. However, traditional backdoor attacks necessitate a considerable amount of additional data to maliciously pre-train a model. This requirement is often impractical in medical imaging applications due to the usual scarcity of data. Inspired by the latest developments in learnable prompts, this work introduces a method to embed a backdoor into the medical foundation model during the prompt learning phase. By incorporating learnable prompts within the text encoder and introducing imperceptible learnable noise trigger to the input images, we exploit the full capabilities of the medical foundation models (Med-FM). Our method, BAPLe, requires only a minimal subset of data to adjust the noise trigger and the text prompts for downstream tasks, enabling the creation of an effective backdoor attack. Through extensive experiments with four medical foundation models, each pre-trained on different modalities and evaluated across six downstream datasets; we demonstrate the efficacy of our approach. BAPLe achieves a high backdoor success rate across all models and datasets, outperforming the baseline backdoor attack methods. Our work highlights the vulnerability of Med-FMs towards backdoor attacks and strives to promote the safe adoption of Med-FMs before their deployment in real-world applications. 
 </i></p>
 
-</br>
-<hr />
-</br>
+<br><hr><br>
 
 <!-- 
 ## Backdoor Attack - Primer
@@ -110,6 +103,18 @@ f_{\theta}(\mathrm{x}) = \{~\mathtt{sim}(~f_{{I}}(\mathrm{x})~,~f{_{T}}(t_i)~)~\
 </p>
 -->
 
+## Updates :rocket:
+- **June 17, 2024** : Accepted in [MICCAI 2024](https://conferences.miccai.org/2024/en/) &nbsp;&nbsp; :confetti_ball: :tada:
+- **Aug 12, 2024** : Released code for BAPLe
+- **Aug 12, 2024** : Released pre-trained models (MedCLIP, BioMedCLIP, PLIP, QuiltNet) 
+- **Aug 30, 2024** : Released instructions for preparing datasets (COVID, RSNA18, ~~MIMIC~~, Kather, PanNuke, DigestPath) 
+
+<br>
+
+For more details, please refer to our [project web page](https://asif-hanif.github.io/baple/) or  [arxive paper](https://arxiv.org/pdf/2408.07440).
+
+<br><br>
+
 ## Table of Contents
 - [Installation](#installation)
 - [Models](#models)
@@ -121,23 +126,10 @@ f_{\theta}(\mathrm{x}) = \{~\mathtt{sim}(~f_{{I}}(\mathrm{x})~,~f{_{T}}(t_i)~)~\
 - [Contact](#contact)
 - [Acknowledgement](#acknowledgement)
 
-</br>
-</br>
 
-For more details, please refer to our [project web page](https://asif-hanif.github.io/baple/) or  [arxive paper](https://arxiv.org/pdf/2408.07440).
+<br><br>
 
-</br>
-<hr/>
-
-
-## Updates :rocket:
-- **June 17, 2024** : Accepted in [MICCAI 2024](https://conferences.miccai.org/2024/en/) &nbsp;&nbsp; :confetti_ball: :tada:
-- **Aug 12, 2024** : Released code for BAPLe
-- **Aug 12, 2024** : Released pre-trained models (MedCLIP, BioMedCLIP, PLIP, QuiltNet) 
-- **Aug 30, 2024** : Released instructions for preparing datasets (COVID, RSNA18, ~~MIMIC~~, Kather, PanNuke, DigestPath) 
-
-
-<br>
+<a name="installation"/>
 
 ## Installation :gear:
 1. Create a conda environment
@@ -154,7 +146,10 @@ sh setup_env.sh
 
 Our code uses [Dassl](https://github.com/KaiyangZhou/Dassl.pytorch.git) codebase for dataset and training.
 
-</br>
+
+<br><br>
+
+<a name="models"/>
 
 ## Models :white_square_button:
 We have shown the efficacy of BAPLe on four medical foundation models: 
@@ -184,6 +179,10 @@ med-vlms/
     ├── plip/
     ├── quiltnet/
  ```
+
+<br><br>
+
+<a name="datasets"/>
 
 ## Datasets :page_with_curl:
 
@@ -227,13 +226,16 @@ Given the relatively small size of the PanNuke dataset compared to other dataset
 | PanNuke | [Download](https://mbzuaiac-my.sharepoint.com/:u:/g/personal/asif_hanif_mbzuai_ac_ae/Ed9DgWkCTf5JqbmMyRgNGTYBfMDrGQkNZwl_P3QSo8cj1Q?e=ZUM79g) | 531 MB |
 
 
-</br>
-<hr/>
+<br><br>
+
+<a name="code-structure"/>
 
 ## Code Structure :snowflake:
 BAPLe code structure is borrowed from [COOP](https://github.com/KaiyangZhou/CoOp). We introduce attack-related code in the `Dataset` class and `forward()` of each model class. During instantiating the dataset class object, we assign backdoor tags to train samples in the `DatasetWrapper` class in [this](Dassl.pytorch/dassl/data/data_manager.py) file. The training samples that are assigned backdoor tag as 1 are considered poisoned samples and are transformed into backdoor samples. This transformation is done in the `forward()` of each model class. Code for these transformations is present in `trainers/backdoor.py` [file](trainers/backdoor.py). Model class for CLIP, PLIP, QuiltNet can be accessed [here](trainers/coop.py), for MedCLIP [here](trainers/coop_medclip.py) and for BioMedCLIP [here](trainers/coop_biomedclip.py). Prompt learning is managed `PromptLearner` class in each trainer file.
 
-</br>
+<br><br>
+
+<a name="run-experiments"/>
 
 ## Run Experiments :zap:
 
@@ -305,6 +307,9 @@ bash scripts/eval.sh quiltnet kather quiltnet_ep50 32
 
 </details>
 
+<br><br>
+
+<a name="results"/>
 
 ## Results :microscope:
 
@@ -324,22 +329,20 @@ If you find our work, this repository, or pretrained models useful, please consi
   year={2024}
 }
 ```
-<!-- @inproceedings{hanif2024baple,
-  title={BAPLE: Backdoor Attacks on Medical Foundational Models using Prompt Learning},
-  author={Hanif, Asif and Shamshad, Fahad and Awais, Muhammad and Naseer, Muzammal and Khan, Fahad Shahbaz, Nandakumar, Karthick and Khan, Salman and Anwer, Rao Muhammad},
-  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
-  year={2024},
-  organization={Springer}
-} -->
-<hr/>
+
+<br><br>
+
+<a name="contact"/>
 
 ## Contact :mailbox:
 Should you have any questions, please create an issue on this repository or contact us at **asif.hanif@mbzuai.ac.ae**
 
-<hr/>
+<br><br>
+
+<a name="acknowledgement"/>
 
 ## Acknowledgement :pray:
 We used [COOP](https://github.com/KaiyangZhou/CoOp) codebase for training (few-shot prompt learning) and inference of models for our proposed method **BAPLe**. We thank the authors for releasing the codebase.
 
-<hr />
+<br><br><hr>
 
