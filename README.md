@@ -316,6 +316,8 @@ bash scripts/eval.sh quiltnet kather quiltnet_ep50 32
 ![main figure](/media/table_1.png)
 <br><br>
 ![main figure](/media/table_2.png)
+<br><br>
+![main figure](/media/noise_visualizations.png)
 
 
 <br><br>
