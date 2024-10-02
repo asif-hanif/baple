@@ -141,7 +141,7 @@ conda activate baple
 ```shell
 git clone https://github.com/asif-hanif/baple
 cd baple
-sh setup_env.sh
+bash setup_env.sh
 ```
 
 Our code uses [Dassl](https://github.com/KaiyangZhou/Dassl.pytorch.git) codebase for dataset and training.
@@ -345,4 +345,3 @@ Should you have any questions, please create an issue on this repository or cont
 We used [COOP](https://github.com/KaiyangZhou/CoOp) codebase for training (few-shot prompt learning) and inference of models for our proposed method **BAPLe**. We thank the authors for releasing the codebase.
 
 <br><br><hr>
-
