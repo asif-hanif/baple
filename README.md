@@ -314,10 +314,13 @@ bash scripts/eval.sh quiltnet kather quiltnet_ep50 32
 ## Results :microscope:
 
 ![main figure](/media/table_1.png)
-</br>
-</br>
+<br><br>
 ![main figure](/media/table_2.png)
-</br>
+
+
+<br><br>
+
+<a name="citation"/>
 
 ## Citation :star:
 If you find our work, this repository, or pretrained models useful, please consider giving a star :star: and citation.
