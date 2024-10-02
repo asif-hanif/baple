@@ -321,6 +321,7 @@ bash scripts/eval.sh quiltnet kather quiltnet_ep50 32
 
 ## Citation :star:
 If you find our work, this repository, or pretrained models useful, please consider giving a star :star: and citation.
+
 ```bibtex
 @article{hanif2024baple,
   title={BAPLe: Backdoor Attacks on Medical Foundational Models using Prompt Learning},
