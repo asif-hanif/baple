@@ -59,3 +59,23 @@ for classname in ['covid', 'normal']: # ['pneumonia', 'lung_opacity']
     filenames = get_sorted_filenames( os.path.join(main_path, classname) )
     # exist_flags = check_filenames_exist(filenames, main_path, classname)
     train_test_split(filenames, classname)
+
+
+
+
+shutil.rmtree(os.path.join(cwd, 'images', 'all-images'))
+
+file_path = os.path.join(cwd, 'COVID.metadata.xlsx')
+if os.path.exists(file_path): os.remove(file_path)
+
+file_path = os.path.join(cwd, 'Lung_Opacity.metadata.xlsx')
+if os.path.exists(file_path): os.remove(file_path)
+
+file_path = os.path.join(cwd, 'Normal.metadata.xlsx')
+if os.path.exists(file_path): os.remove(file_path)
+
+file_path = os.path.join(cwd, 'Viral Pneumonia.metadata.xlsx')
+if os.path.exists(file_path): os.remove(file_path)
+
+file_path = os.path.join(cwd, 'README.md.txt')
+if os.path.exists(file_path): os.remove(file_path)

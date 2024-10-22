@@ -3,8 +3,8 @@ export CUDA_VISIBLE_DEVICES=0
 cd Dassl.pytorch && python setup.py develop && cd ..
 
 
-DATASET_ROOT=/data-nvme/asif.hanif/datasets/med-datasets
-MODEL_ROOT=/data-nvme/asif.hanif/pre-trained-models/med-vlms
+DATASET_ROOT=/data2/asif.hanif/med-datasets
+MODEL_ROOT=/data2/asif.hanif/med-vlms
 
 
 TRAINER=CoOp_MedCLIP
